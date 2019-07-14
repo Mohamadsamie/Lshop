@@ -11,6 +11,17 @@
 |
 */
 
+
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+//Route::group(['middleware'=>'admin'] , function () {
+//
+//});
+
+Route::prefix('adminstrator')->group(function (){
+    Route::get('/' , 'Backend\MainController@mainPage');
 });
