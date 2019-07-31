@@ -22,6 +22,7 @@ Route::get('/', function () {
 //
 //});
 
-Route::prefix('adminstrator')->group(function (){
+Route::prefix('administrator')->group(function (){
     Route::get('/' , 'Backend\MainController@mainPage');
+    Route::resource('categories' , 'Backend\CategoryController');
 });
