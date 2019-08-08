@@ -27,4 +27,11 @@ Route::prefix('administrator')->group(function (){
     Route::resource('categories' , 'Backend\CategoryController');
     Route::resource('attributes-group' , 'Backend\AttributeGroupController');
     Route::resource('attributes-value' , 'Backend\AttributeValueController');
+    Route::resource('brands' , 'Backend\BrandCntroller');
+    Route::resource('photos' , 'Backend\PhotoController');
+    Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
+
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

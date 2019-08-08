@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     {{--<!-- Ionicons -->--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    @yield('styles')
     {{--<!-- Theme style -->--}}
     {{--<link rel="stylesheet" href="admin/dist/css/AdminLTE.min.css">--}}
     {{--<!-- AdminLTE Skins. Choose a skin from the css/skins--}}
@@ -382,15 +383,15 @@
                         <li><a href="{{route('attributes-value.index')}}"><i class="fa fa-circle-o"></i> مقادیر ویژگی ها</a></li>
                     </ul>
                 </li>
-                {{--<li class="treeview">--}}
-                    {{--<a href="#">--}}
-                        {{--<i class="fa fa-edit"></i> <span>مقادیر ویژگی ها</span>--}}
-                        {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                    {{--</a>--}}
-                    {{--<ul class="treeview-menu">--}}
-                        {{--<li><a href="{{route('attributes-value.index')}}"><i class="fa fa-circle-o"></i> لیست مقادیر ویژگی ها</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-edit"></i> <span>برندها</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('brands.index')}}"><i class="fa fa-circle-o"></i> لیست برندها</a></li>
+                    </ul>
+                </li>
 
                 <li class="treeview">
                     <a href="#">
@@ -675,6 +676,7 @@
 </div>
 <!-- ./wrapper -->
 <script src="{{asset('js/admin.js')}}"></script>
+@yield('scripts')
 {{--<!-- jQuery 2.2.0 -->--}}
 {{--<script src="/admin/plugins/jQuery/jQuery-2.2.0.min.js"></script>--}}
 {{--<!-- jQuery UI 1.11.4 -->--}}

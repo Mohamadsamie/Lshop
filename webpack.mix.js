@@ -49,3 +49,11 @@ mix.scripts([
     'resources/admin/dist/js/pages/dashboard.js',
     'resources/admin/dist/js/demo.js',
 ], 'public/js/admin.js');
+
+mix.styles([
+    'resources/admin/backend/css/dropzone.min.css',
+], 'public/css/dropzone.css');
+
+mix.scripts([
+    'resources/admin/backend/js/dropzone.min.js',
+], 'public/js/dropzone.js');
