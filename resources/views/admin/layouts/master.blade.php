@@ -366,6 +366,16 @@
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-list"></i>
+                        <span> محصولات</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('products.index')}}"><i class="fa fa-circle-o"></i> لیست محصولات</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-list"></i>
                         <span> دسته بندی ها</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>

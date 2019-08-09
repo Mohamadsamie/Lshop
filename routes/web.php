@@ -30,6 +30,8 @@ Route::prefix('administrator')->group(function (){
     Route::resource('brands' , 'Backend\BrandCntroller');
     Route::resource('photos' , 'Backend\PhotoController');
     Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
+    Route::resource('products' , 'Backend\ProductController');
+
 
 });
 Auth::routes();
