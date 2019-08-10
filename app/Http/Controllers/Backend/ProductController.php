@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Brand;
+use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ':)';
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -24,7 +28,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::with('childrenRecursive')->where('parent_id', null)->get();
+        $brands = Brand::all();
+        return view('admin.products.create', compact(['categories','brands']));
+
     }
 
     /**

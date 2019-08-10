@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+use App\AttributeGroup;
 use App\Category;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryEditRequest;
@@ -123,5 +124,21 @@ class CategoryController extends Controller
 
         }
 
+    }
+
+
+    public function indexSetting($id)
+    {
+        $category = Category::findOrFail($id);
+        $attributeGroups = AttributeGroup::all();
+        return view('admin.categories.index-settings', compact(['category','attributeGroups']));
+    }
+
+    public function saveSetting(Request $request, $id)
+    {
+        $category = Category::findOrFail($id);
+        $category->attributeGroups()->sync($request->attributeGroups);
+        $category->save();
+        return redirect('/administrator/categories');
     }
 }

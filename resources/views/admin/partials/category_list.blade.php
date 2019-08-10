@@ -11,6 +11,8 @@
                     <button type="submit" class="btn btn-danger">حذف</button>
                 </form>
             </div>
+            <a href="{{route('categories.indexSetting', $sub_category->id)}}" class="btn btn-primary">تنظیمات</a>
+
         </td>
     </tr>
     @if(count($sub_category->childrenRecursive) > 0)

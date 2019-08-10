@@ -21,8 +21,7 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function AttributeGroup()
-    {
-        return $this->hasMany(AttributeGroup::class, 'attributeGroup_id');
+    public function attributeGroups(){
+        return $this->belongsToMany(AttributeGroup::class, 'attributegroup_category', 'category_id', 'attributeGroup_id');
     }
 }

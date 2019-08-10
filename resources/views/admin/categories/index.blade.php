@@ -51,9 +51,10 @@
                                         <form method="post" action="/administrator/categories/{{$category->id}}">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger">حذف</button>
+                                            <button type="submit" class="btn btn-danger" >حذف</button>
                                         </form>
                                     </div>
+                                    <a href="{{route('categories.indexSetting', $category->id)}}" class="btn btn-primary">تنظیمات</a>
                                 </td>
                             </tr>
                             @if(count($category->childrenRecursive) > 0)
