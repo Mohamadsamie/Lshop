@@ -57,3 +57,5 @@ mix.styles([
 mix.scripts([
     'resources/admin/backend/js/dropzone.min.js',
 ], 'public/js/dropzone.js');
+
+mix.js('resources/js/app.js', 'public/admin/js');
