@@ -141,4 +141,15 @@ class CategoryController extends Controller
         $category->save();
         return redirect('/administrator/categories');
     }
+
+    public function apiIndex()
+    {
+        $categories = Category::with('childrenRecursive')
+            ->where('parent_id', null)
+            ->get();
+        $response = [
+            'categories' => $categories
+        ];
+        return response()->json($response, 200); // data for Vue.js
+    }
 }

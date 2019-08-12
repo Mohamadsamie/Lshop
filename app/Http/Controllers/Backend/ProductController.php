@@ -28,9 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::with('childrenRecursive')->where('parent_id', null)->get();
+        //$categories = Category::with('childrenRecursive')->where('parent_id', null)->get();  // we don't need this line when using axios from vue.js
         $brands = Brand::all();
-        return view('admin.products.create', compact(['categories','brands']));
+        return view('admin.products.create', compact(['brands']));
 
     }
 

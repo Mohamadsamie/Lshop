@@ -21,6 +21,10 @@ Route::get('/', function () {
 //Route::group(['middleware'=>'admin'] , function () {
 //
 //});
+Route::prefix('api')->group(function (){
+    Route::get('categories' , 'Backend\CategoryController@apiIndex')->name('api.categories');
+});
+
 
 Route::prefix('administrator')->group(function (){
     Route::get('/' , 'Backend\MainController@mainPage');

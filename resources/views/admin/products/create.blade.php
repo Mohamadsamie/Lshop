@@ -5,12 +5,7 @@
 @endsection
 
 @section('content')
-   <div id="app">
-       <example-component>
-
-       </example-component>
-   </div>
-    <section class="content">
+    <section id="app" class="content">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">ایجاد محصول جدید</h3>
@@ -30,25 +25,9 @@
                                 <label for="slug">نام مستعار</label>
                                 <input type="text" name="slug" class="form-control" placeholder="نام مستعار محصول را وارد کنید...">
                             </div>
-                            <div class="form-group">
-                                <label for="categories">دسته بندی</label>
-                                <select name="categories[]" id="" class="form-control" multiple>
-                                    @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @if(count($category->childrenRecursive) > 0)
-                                            @include('admin.partials.category', ['categories'=>$category->childrenRecursive, 'level'=>1])
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="brand">برند</label>
-                                <select name="brand" id="" class="form-control">
-                                    @foreach($brands as $brand)
-                                        <option value="{{$brand->id}}">{{$brand->title}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            {{--Vue.js component--}}
+                            <attribute-component :brands="{{ $brands }}"></attribute-component>
+                            {{--Vue.js component--}}
                             <div class="form-group" style="direction: rtl;">
                                 <label for="status"> وضعیت نشر</label><br>
                                 <input type="radio" name="status" value="0" checked><span style="margin: 0 10px;">منتشر نشده</span>
