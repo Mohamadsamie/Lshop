@@ -152,4 +152,18 @@ class CategoryController extends Controller
         ];
         return response()->json($response, 200); // data for Vue.js
     }
+    public function apiIndexAttribute(Request $request)
+    {
+
+        $categories = $request->all();
+        $attributeGroup = AttributeGroup::with('attributesValue', 'categories')
+            ->whereHas('categories', function($q) use ($categories){
+                $q->whereIn('categories.id', $categories);
+            })->get();
+
+        $response =[
+            'attributes' => $attributeGroup
+        ];
+        return response()->json($response, 200); // data for Vue.js
+    }
 }

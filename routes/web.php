@@ -23,6 +23,7 @@ Route::get('/', function () {
 //});
 Route::prefix('api')->group(function (){
     Route::get('categories' , 'Backend\CategoryController@apiIndex')->name('api.categories');
+    Route::post('categories/attribute' , 'Backend\CategoryController@apiIndexAttribute')->name('api.categories.attribute');
 });
 
 

@@ -1714,10 +1714,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      categories: []
+      categories: [],
+      categories_selected: [],
+      flag: false,
+      attributes: []
     };
   },
   props: ['brands'],
@@ -1743,6 +1754,18 @@ __webpack_require__.r(__webpack_exports__);
           this.getAllChildren(current.children_recursive, level + 1);
         }
       }
+    },
+    onChange: function onChange(event) {
+      var _this2 = this;
+
+      this.flag = false;
+      axios.post('/api/categories/attribute', this.categories_selected).then(function (res) {
+        _this2.attributes = res.data.attributes;
+        _this2.flag = true;
+      })["catch"](function (err) {
+        console.log(err);
+        _this2.flag = false;
+      });
     }
   }
 });
@@ -2294,11 +2317,39 @@ var render = function() {
       _c(
         "select",
         {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.categories_selected,
+              expression: "categories_selected"
+            }
+          ],
           staticClass: "form-control",
-          attrs: { name: "categories[]", multiple: "" }
+          attrs: { name: "categories[]", multiple: "" },
+          on: {
+            change: [
+              function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.categories_selected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+              function($event) {
+                return _vm.onChange($event)
+              }
+            ]
+          }
         },
         _vm._l(_vm.categories, function(category) {
-          return _c("option", { domProps: { value: _vm.categories.id } }, [
+          return _c("option", { domProps: { value: category.id } }, [
             _vm._v(_vm._s(category.name))
           ])
         }),
@@ -2319,7 +2370,32 @@ var render = function() {
         }),
         0
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm.flag
+      ? _c(
+          "div",
+          _vm._l(_vm.attributes, function(attribute) {
+            return _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("ویژگی " + _vm._s(attribute.title))]),
+              _vm._v(" "),
+              _c(
+                "select",
+                { staticClass: "form-control", attrs: { name: "attribute" } },
+                _vm._l(attribute.attributes_value, function(attributeValue) {
+                  return _c(
+                    "option",
+                    { domProps: { value: attributeValue.id } },
+                    [_vm._v(_vm._s(attributeValue.title))]
+                  )
+                }),
+                0
+              )
+            ])
+          }),
+          0
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
