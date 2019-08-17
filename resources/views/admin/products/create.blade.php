@@ -43,12 +43,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="description">توضیحات</label>
-                                <textarea type="text" name="description" class="form-control" placeholder="توضیحات برند را وارد کنید..."></textarea>
+                                <label for="textareaDescription">توضیحات</label>
+                                <textarea type="text" name="textareaDescription" class="ckeditor form-control" placeholder="توضیحات برند را وارد کنید..."></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="photo">تصویر</label>
-                                <input type="hidden" name="photo_id" id="brand-photo">
+                                <label for="photo">گالری تصاویر</label>
+                                <input type="hidden" name="photo_id[]" id="product-photo">
                                 <div id="photo" class="dropzone"></div>
                             </div>
                             <div class="form-group">
@@ -64,7 +64,7 @@
                                 <input type="text" name="meta_keywords" class="form-control" placeholder="کلمات کلیدی سئو را وارد کنید...">
                             </div>
 
-                            <button type="submit" class="btn btn-success pull-left">ذخیره</button>
+                            <button type="submit" onclick="productGalley()" class="btn btn-success pull-left">ذخیره</button>
                         </form>
                     </div>
                 </div>
@@ -73,20 +73,34 @@
     </section>
 @endsection
 
+@section('script-vuejs')
+    <script src="{{asset('admin/js/app.js')}}"></script>
+@endsection
+
 @section('scripts')
     <script type="text/javascript" src="{{asset('/js/dropzone.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/admin/plugins/ckeditor/ckeditor.js')}}"></script>
     <script>
+        Dropzone.autoDiscover = false;
+        var photoGallery = []
         var drop = new Dropzone('#photo', {
             addRemoveLinks: true,
-            maxFiles: 1,
             url: "{{ route('photos.upload') }}",
             sending: function(file, xhr, formData){
                 formData.append("_token","{{csrf_token()}}")
             },
             success: function(file, response){
-                document.getElementById('brand-photo').value = response.photo_id
+                photoGallery.push(response.photo_id)
             }
         });
+        productGalley =function () {
+            document.getElementById('product-photo').value = photoGallery
+        }
+        CKEDITOR.replace('textareaDescription',{
+            customConfig: 'config.js',
+            toolbar: 'simple',
+            language: 'fa',
+            removePlugins: 'cloudservices'
+        })
     </script>
-    <script src="{{asset('admin/js/app.js')}}"></script>
 @endsection

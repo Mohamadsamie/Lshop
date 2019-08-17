@@ -1722,13 +1722,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       categories: [],
       categories_selected: [],
       flag: false,
-      attributes: []
+      attributes: [],
+      selectedAttribute: []
     };
   },
   props: ['brands'],
@@ -1766,6 +1770,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err);
         _this2.flag = false;
       });
+    },
+    addAttribute: function addAttribute(event) {
+      if (this.selectedAttribute.indexOf(event.target.value) == -1) {
+        this.selectedAttribute.push(event.target.value);
+      }
     }
   }
 });
@@ -2363,37 +2372,61 @@ var render = function() {
       _c(
         "select",
         { staticClass: "form-control", attrs: { name: "brand" } },
-        _vm._l(_vm.brands, function(brand) {
-          return _c("option", { domProps: { value: brand.id } }, [
-            _vm._v(_vm._s(brand.title))
-          ])
-        }),
-        0
+        [
+          _c("option", [_vm._v("انتخاب کنید...")]),
+          _vm._v(" "),
+          _vm._l(_vm.brands, function(brand) {
+            return _c("option", { domProps: { value: brand.id } }, [
+              _vm._v(_vm._s(brand.title))
+            ])
+          })
+        ],
+        2
       )
     ]),
     _vm._v(" "),
     _vm.flag
       ? _c(
           "div",
-          _vm._l(_vm.attributes, function(attribute) {
-            return _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("ویژگی " + _vm._s(attribute.title))]),
-              _vm._v(" "),
-              _c(
-                "select",
-                { staticClass: "form-control", attrs: { name: "attribute" } },
-                _vm._l(attribute.attributes_value, function(attributeValue) {
-                  return _c(
-                    "option",
-                    { domProps: { value: attributeValue.id } },
-                    [_vm._v(_vm._s(attributeValue.title))]
-                  )
-                }),
-                0
-              )
-            ])
-          }),
-          0
+          [
+            _vm._l(_vm.attributes, function(attribute) {
+              return _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("ویژگی " + _vm._s(attribute.title))]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        return _vm.addAttribute($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("option", [_vm._v("انتخاب کنید...")]),
+                    _vm._v(" "),
+                    _vm._l(attribute.attributes_value, function(
+                      attributeValue
+                    ) {
+                      return _c(
+                        "option",
+                        { domProps: { value: attributeValue.id } },
+                        [_vm._v(_vm._s(attributeValue.title))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "attributes[]" },
+              domProps: { value: _vm.selectedAttribute }
+            })
+          ],
+          2
         )
       : _vm._e()
   ])

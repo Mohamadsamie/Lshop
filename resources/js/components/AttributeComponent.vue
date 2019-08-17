@@ -9,17 +9,20 @@
             <div class="form-group">
                 <label>برند</label>
                 <select name="brand"  class="form-control">
+                    <option>انتخاب کنید...</option>
                     <option v-for="brand in brands" :value="brand.id">{{brand.title}}</option>
                 </select>
             </div>
-        <div v-if="flag">
-            <div class="form-group" v-for="attribute in attributes">
-                <label>ویژگی {{attribute.title}}</label>
-                <select name="attribute" class="form-control">
-                    <option  v-for="attributeValue in attribute.attributes_value" :value="attributeValue.id">{{attributeValue.title}}</option>
-                </select>
+            <div v-if="flag">
+                <div class="form-group" v-for="attribute in attributes">
+                    <label>ویژگی {{attribute.title}}</label>
+                    <select class="form-control" @change="addAttribute($event)">
+                        <option>انتخاب کنید...</option>
+                        <option  v-for="attributeValue in attribute.attributes_value" :value="attributeValue.id">{{attributeValue.title}}</option>
+                    </select>
+                </div>
+                <input type="hidden" name="attributes[]" :value="selectedAttribute">
             </div>
-        </div>
         </div>
 </template>
 
@@ -30,7 +33,8 @@
                 categories:[],
                 categories_selected:[],
                 flag: false,
-                attributes:[]
+                attributes:[],
+                selectedAttribute:[]
             }
         },
         props: ['brands'],
@@ -63,6 +67,11 @@
                     console.log(err)
                     this.flag = false
                 })
+            },
+            addAttribute: function (event) {
+                if (this.selectedAttribute.indexOf(event.target.value) == -1){
+                    this.selectedAttribute.push(event.target.value)
+                }
             }
         }
 

@@ -685,6 +685,7 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+@yield('script-vuejs')
 <script src="{{asset('js/admin.js')}}"></script>
 @yield('scripts')
 {{--<!-- jQuery 2.2.0 -->--}}
