@@ -19,16 +19,16 @@
             <div class="box-body">
                 @include('admin.partials.form-errors')
                 {{--Sessions Start--}}
-                {{--@if(Session::has('brand-delete'))--}}
-                    {{--<div class="alert alert-danger">--}}
-                        {{--<div style="direction: rtl;"  class="text-center">{{session('brand-delete')}}</div>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
-                {{--@if(Session::has('success'))--}}
-                    {{--<div class="alert alert-success">--}}
-                        {{--<div class="text-center">{{session('success')}}</div>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
+                @if(Session::has('delete'))
+                    <div class="alert alert-danger">
+                        <div style="direction: rtl;"  class="text-center">{{session('delete')}}</div>
+                    </div>
+                @endif
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        <div class="text-center">{{session('success')}}</div>
+                    </div>
+                @endif
                 {{--@if(Session::has('edit-brand'))--}}
                     {{--<div class="alert alert-success">--}}
                         {{--<div class="text-center">{{session('edit-brand')}}</div>--}}

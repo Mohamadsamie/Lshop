@@ -19,36 +19,36 @@
                             @csrf
                             <div class="form-group">
                                 <label for="title">نام</label>
-                                <input type="text" name="title" class="form-control" placeholder="نام محصول را وارد کنید...">
+                                <input value="{{old('title')}}" type="text" name="title" class="form-control"  placeholder="نام محصول را وارد کنید...">
                             </div>
                             <div class="form-group">
                                 <label for="slug">نام مستعار</label>
-                                <input type="text" name="slug" class="form-control" placeholder="نام مستعار محصول را وارد کنید...">
+                                <input value="{{old('slug')}}" type="text" name="slug" class="form-control" placeholder="نام مستعار محصول را وارد کنید...">
                             </div>
                             {{--Vue.js component--}}
                             <attribute-component :brands="{{ $brands }}"></attribute-component>
                             {{--Vue.js component--}}
                             <div class="form-group" style="direction: rtl;">
                                 <label for="status"> وضعیت نشر</label><br>
-                                <input type="radio" name="status" value="0" checked><span style="margin: 0 10px;">منتشر نشده</span>
-                                <input type="radio" name="status" value="1"><span style="margin: 0 10px;">منتشر شده</span>
+                                <input  type="radio" name="status" value="0" checked><span style="margin: 0 10px;">منتشر نشده</span>
+                                <input  type="radio" name="status" value="1"><span style="margin: 0 10px;">منتشر شده</span>
                             </div>
                             <div class="form-group">
                                 <label for="price">قیمت محصول</label>
-                                <input type="number" name="price" class="form-control" placeholder="قیمت محصول را وارد کنید...">
+                                <input value="{{old('price')}}" type="number" name="price" class="form-control" placeholder="قیمت محصول را وارد کنید...">
                             </div>
                             <div class="form-group">
                                 <label for="discount_price">قیمت ویژه</label>
-                                <input type="number" name="discount_price" class="form-control" placeholder="قیمت ویژه محصول را وارد کنید...">
+                                <input value="{{old('discount_price')}}" type="number" name="discount_price" class="form-control" placeholder="قیمت ویژه محصول را وارد کنید...">
                             </div>
 
                             <div class="form-group">
-                                <label for="textareaDescription">توضیحات</label>
-                                <textarea type="text" name="textareaDescription" class="ckeditor form-control" placeholder="توضیحات برند را وارد کنید..."></textarea>
+                                <label for="description">توضیحات</label>
+                                <textarea type="text" name="description" class="ckeditor form-control" placeholder="توضیحات برند را وارد کنید...">{{old('description')}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="photo">گالری تصاویر</label>
-                                <input type="hidden" name="photo_id[]" id="product-photo">
+                                <input  value="{{old('photo_id[]')}}" type="hidden" name="photo_id[]" id="product-photo">
                                 <div id="photo" class="dropzone"></div>
                             </div>
                             <div class="form-group">
@@ -96,7 +96,7 @@
         productGalley =function () {
             document.getElementById('product-photo').value = photoGallery
         }
-        CKEDITOR.replace('textareaDescription',{
+        CKEDITOR.replace('description',{
             customConfig: 'config.js',
             toolbar: 'simple',
             language: 'fa',

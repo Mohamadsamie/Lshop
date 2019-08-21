@@ -257,7 +257,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">آکادمی آنلاین روکسو</span>
+                            <span class="hidden-xs">فروشگاه آنلاین Egreen</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -314,7 +314,7 @@
                     <img src="/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-right info">
-                    <p>آکادمی آنلاین روکسو</p>
+                    <p>فروشگاه آنلاین Egreen</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -483,10 +483,10 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.3
+        <div class="pull-left hidden-xs">
+           Designed by <a target="_blank" href="http://soldesign.ir">Soldesign</a>
         </div>
-        <strong>Copyright &copy; 2015-2019 <a href="https://www.roxo.ir">Roxo Studio</a>.</strong> All rights
+        <strong>Copyright &copy; 2019 <a href="https://www.egreen.shop">Egreen</a>.</strong> All rights
         reserved.
     </footer>
 
