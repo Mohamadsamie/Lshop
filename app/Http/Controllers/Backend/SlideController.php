@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
-use App\Banner;
-use App\Product;
 use App\Slide;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
-class HomeController extends Controller
+
+class SlideController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +18,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $slides = Slide::with('photo')->orderBy('created_at', 'desc')->limit(5)->get();
-        $latestProduct = Product::orderBy('created_at', 'desc')->limit(10)->get();
-        $banners = Banner::with('photo')->orderBy('created_at', 'desc')->limit(6)->get();
-        return view('frontend.home.index', compact(['latestProduct','banners','slides']));
-
+        $slides = Slide::all();
+        return view('admin.slides.index', compact(['slides']));
     }
 
     /**
@@ -31,7 +29,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.slides.create');
     }
 
     /**
@@ -42,7 +40,27 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'photo_id' => 'required',
+            'title' => 'required'
+        ],[
+            'photo_id.required' => 'تصویر اسلایدر الزامیست',
+            'title.required' => 'انتخاب عنوان برای اسلایدر الزامیست',
+        ]);
+        if($validator->fails()){
+            return redirect('/administrator/slides')->withErrors($validator)->withInput();
+        }else{
+            $slide = new Slide();
+            $slide->title = $request->input('title');
+            $slide->alt = $request->input('alt');
+            $slide->link = $request->input('link');
+            $slide->photo_id = $request->input('photo_id');
+            $slide->save();
+
+            Session::flash('success', 'اسلایدر با موفقیت ذخیره شد');
+            return redirect('/administrator/slides');
+
+        }
     }
 
     /**

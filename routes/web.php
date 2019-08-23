@@ -34,6 +34,7 @@ Route::prefix('administrator')->group(function (){
     Route::resource('attributes-value' , 'Backend\AttributeValueController');
     Route::resource('brands' , 'Backend\BrandCntroller');
     Route::resource('banners' , 'Backend\BannerController');
+    Route::resource('slides' , 'Backend\SlideController');
     Route::resource('photos' , 'Backend\PhotoController');
     Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
     Route::resource('products' , 'Backend\ProductController');

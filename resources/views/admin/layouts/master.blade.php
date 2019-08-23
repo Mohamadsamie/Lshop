@@ -411,7 +411,7 @@
                         <li><a href="{{route('banners.index')}}"><i class="fa fa-circle-o"></i> لیست بنرها</a></li>
                     </ul>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> لیست اسلایدرها</a></li>
+                        <li><a href="{{route('slides.index')}}"><i class="fa fa-circle-o"></i> لیست اسلایدرها</a></li>
                     </ul>
                 </li>
 

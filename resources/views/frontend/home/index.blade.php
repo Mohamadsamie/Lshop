@@ -1,15 +1,20 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+
     <div class="row">
         <!--Middle Part Start-->
         <div id="content" class="col-xs-12">
             <!-- Slideshow Start-->
-            <div class="slideshow single-slider owl-carousel">
-                <div class="item"> <a href="#"><img class="img-responsive" src="image/slider/banner-2.jpg" alt="banner 2" /></a> </div>
-                <div class="item"> <a href="#"><img class="img-responsive" src="image/slider/banner-1.jpg" alt="banner 1" /></a> </div>
-                <div class="item"> <a href="#"><img class="img-responsive" src="image/slider/banner-3.jpg" alt="banner 1" /></a> </div>
-            </div>
+            @if(count($slides) > 0)
+                <div class="slideshow single-slider owl-carousel">
+                    @foreach($slides as $slide)
+                    <div class="item"> <a href="{{$slide->link}}"><img class="img-responsive" src="{{$slide->photo->path}}" alt="{{$slide->alt}}" /></a> </div>
+                    @endforeach
+                    {{--<div class="item"> <a href="#"><img class="img-responsive" src="image/slider/banner-1.jpg" alt="banner 1" /></a> </div>--}}
+                    {{--<div class="item"> <a href="#"><img class="img-responsive" src="image/slider/banner-3.jpg" alt="banner 1" /></a> </div>--}}
+                </div>
+            @endif
             <!-- Slideshow End-->
             <!-- Banner Start-->
             @if(count($banners) > 0)
