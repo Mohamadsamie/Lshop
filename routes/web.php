@@ -14,9 +14,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', 'Frontend\HomeController');
 
 //Route::group(['middleware'=>'admin'] , function () {
 //
@@ -35,6 +33,7 @@ Route::prefix('administrator')->group(function (){
     Route::resource('attributes-group' , 'Backend\AttributeGroupController');
     Route::resource('attributes-value' , 'Backend\AttributeValueController');
     Route::resource('brands' , 'Backend\BrandCntroller');
+    Route::resource('banners' , 'Backend\BannerController');
     Route::resource('photos' , 'Backend\PhotoController');
     Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
     Route::resource('products' , 'Backend\ProductController');
