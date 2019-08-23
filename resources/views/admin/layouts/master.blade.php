@@ -402,6 +402,18 @@
                         <li><a href="{{route('brands.index')}}"><i class="fa fa-circle-o"></i> لیست برندها</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-edit"></i> <span>مدیریت بنر و اسلایدرها</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('banners.index')}}"><i class="fa fa-circle-o"></i> لیست بنرها</a></li>
+                    </ul>
+                    <ul class="treeview-menu">
+                        <li><a href="#"><i class="fa fa-circle-o"></i> لیست اسلایدرها</a></li>
+                    </ul>
+                </li>
 
                 {{--<li class="treeview">--}}
                     {{--<a href="#">--}}
