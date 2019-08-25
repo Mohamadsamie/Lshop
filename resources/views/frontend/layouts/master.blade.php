@@ -5,7 +5,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="image/favicon.png" rel="icon" />
-    <title>مارکت شاپ - قالب HTML فروشگاهی</title>
+    <title>فروشگاه اینترنتی سبز | Egreen</title>
     <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
     <!-- CSS Part Start-->
     <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css" />
@@ -18,11 +18,12 @@
     <link rel="stylesheet" type="text/css" href="css/stylesheet-rtl.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive-rtl.css" />
     <link rel="stylesheet" type="text/css" href="css/stylesheet-skin2.css" />
+    @yield('frontend-styles')
 
     <!-- CSS Part End-->
 </head>
 <body>
-<div class="wrapper-wide">
+<div class="wrapper-wide" id="app">
     <div id="header">
         <!-- Top Bar Start-->
         <nav id="top" class="htop">
@@ -90,8 +91,8 @@
                     </div>
                     <div id="top-links" class="nav pull-right flip">
                         <ul>
-                            <li><a href="login.html">ورود</a></li>
-                            <li><a href="register.html">ثبت نام</a></li>
+                            <li><a href="{{route('login')}}">ورود</a></li>
+                            <li><a href="{{route('register')}}">ثبت نام</a></li>
                         </ul>
                     </div>
                 </div>
@@ -455,6 +456,9 @@
 <script type="text/javascript" src="js/jquery.dcjqaccordion.min.js"></script>
 <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
+@yield('script-vuejs')
+@yield('fronted-scripts')
+
 <!-- JS Part End-->
 
 </body>

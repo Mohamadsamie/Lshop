@@ -22,11 +22,12 @@ Route::resource('/', 'Frontend\HomeController');
 Route::prefix('api')->group(function (){
     Route::get('categories' , 'Backend\CategoryController@apiIndex')->name('api.categories');
     Route::post('categories/attribute' , 'Backend\CategoryController@apiIndexAttribute')->name('api.categories.attribute');
+    Route::get('/cities/{provinceId}', 'Auth\RegisterController@getAllCities');
 });
 
 
 Route::prefix('administrator')->group(function (){
-    Route::get('/' , 'Backend\MainController@mainPage');
+    Route::get('/' , 'Backend\MainController@mainPage')->name('administrator');
     Route::resource('categories' , 'Backend\CategoryController');
     Route::get('/categories/{id}/settings', 'Backend\CategoryController@indexSetting')->name('categories.indexSetting');
     Route::post('/categories/{id}/settings', 'Backend\CategoryController@saveSetting')->name('categories.saveSetting');
@@ -38,9 +39,11 @@ Route::prefix('administrator')->group(function (){
     Route::resource('photos' , 'Backend\PhotoController');
     Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
     Route::resource('products' , 'Backend\ProductController');
-
-
 });
+
+Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

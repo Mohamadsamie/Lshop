@@ -11,8 +11,6 @@
                     @foreach($slides as $slide)
                     <div class="item"> <a href="{{$slide->link}}"><img class="img-responsive" src="{{$slide->photo->path}}" alt="{{$slide->alt}}" /></a> </div>
                     @endforeach
-                    {{--<div class="item"> <a href="#"><img class="img-responsive" src="image/slider/banner-1.jpg" alt="banner 1" /></a> </div>--}}
-                    {{--<div class="item"> <a href="#"><img class="img-responsive" src="image/slider/banner-3.jpg" alt="banner 1" /></a> </div>--}}
                 </div>
             @endif
             <!-- Slideshow End-->
@@ -862,16 +860,15 @@
             <!-- دسته ها محصولات Slider End -->
 
             <!-- برند Logo Carousel Start-->
-            <div id="carousel" class="owl-carousel nxt">
-                <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="پالم" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="سونی" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="کنون" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="اپل" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="اچ تی سی" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="اچ پی" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="image/product/apple_logo-100x100.jpg" alt="brand" class="img-responsive" /></a> </div>
-                <div class="item text-center"> <a href="#"><img src="image/product/canon_logo-100x100.jpg" alt="brand1" class="img-responsive" /></a> </div>
-            </div>
+            @if(count($brands) > 0)
+                <div id="carousel" class="owl-carousel nxt">
+                    @foreach($brands as $brand)
+                        <div class="item text-center">
+                            <a href="#"><img src="{{$brand->photo->path}}" alt="{{$brand->title}}" class="img-responsive" /></a>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             <!-- برند Logo Carousel End -->
         </div>
         <!--Middle Part End-->

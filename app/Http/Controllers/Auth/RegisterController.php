@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\City;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -55,6 +56,14 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function getAllCities($provinceId)
+    {
+        $cities = City::where('province_id', $provinceId)->whereId('403')->get(); //to load other cities remove ->whereId('403')
+        $response =[
+            'cities' => $cities
+        ];
+        return response()->json($response, 200);
+    }
     /**
      * Create a new user instance after a valid registration.
      *

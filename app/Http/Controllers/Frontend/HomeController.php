@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Banner;
+use App\Brand;
 use App\Product;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -17,10 +18,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $brands = Brand::with('photo')->orderBy('created_at', 'desc')->limit(10)->get();
         $slides = Slide::with('photo')->orderBy('created_at', 'desc')->limit(5)->get();
         $latestProduct = Product::orderBy('created_at', 'desc')->limit(10)->get();
         $banners = Banner::with('photo')->orderBy('created_at', 'desc')->limit(6)->get();
-        return view('frontend.home.index', compact(['latestProduct','banners','slides']));
+        return view('frontend.home.index', compact([
+            'latestProduct',
+            'banners',
+            'slides',
+            'brands'
+            ]));
 
     }
 

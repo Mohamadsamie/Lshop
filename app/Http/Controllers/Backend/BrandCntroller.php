@@ -119,12 +119,18 @@ class BrandCntroller extends Controller
     public function destroy($id)
     {
         $brand = Brand::findOrFail($id);
-        $photo = Photo::findOrFail($brand->photo_id);
-        unlink(public_path().$photo->path); // remove img file from public dir
-        $photo->delete();
-        $brand->delete();
+        if (count($brand->products) > 0 ){
+            Session::flash('brand-delete', 'برند دارای محصول میباشد و حذف آن ممکن نیست');
+            return redirect('/administrator/brands');
+        }
+        else{
+            $photo = Photo::findOrFail($brand->photo_id);
+            unlink(public_path().$photo->path); // remove img file from public dir
+            $photo->delete();
+            $brand->delete();
 
-        Session::flash('brand-delete', 'برند '.$brand->title.' با موفقیت حذف شد.');
-        return redirect('/administrator/brands');
+            Session::flash('brand-delete', 'برند '.$brand->title.' با موفقیت حذف شد.');
+            return redirect('/administrator/brands');
+        }
     }
 }
