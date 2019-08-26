@@ -6,8 +6,13 @@ use App\Banner;
 use App\Brand;
 use App\Product;
 use App\Slide;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -96,4 +101,28 @@ class HomeController extends Controller
     {
         //
     }
+    //    ---------------------------------------------------
+    /**
+     * Handle an authentication attempt.
+     *
+     * @return Response
+     */
+
+    public function authenticateUser(Request $request)
+    {
+        $national_code = $request->input('national_code');
+        $password = $request->input('password');
+        $user = User::where('national_code', '=', $national_code)->first();
+        if (!$user || !Hash::check($password, $user->password)) {
+            Session::flash('error-login', 'کد ملی یا رمز عبور به درستی وارد نشده است!');
+            return redirect()->intended('/login');
+        }
+
+        if (Auth::attempt(['national_code' => $national_code , 'password' => $password]) && Hash::check($password, $user->password)) {
+            // Authentication passed...
+            Session::flash('success-login', 'خوش آمدید.');
+            return redirect()->intended('/home');
+        }
+    }
+//    ---------------------------------------------------
 }

@@ -47,3 +47,7 @@ Route::post('/register-user', 'Frontend\UserController@register')->name('user.re
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// user login route
+Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
+// user login route
