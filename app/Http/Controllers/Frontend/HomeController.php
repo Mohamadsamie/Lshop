@@ -120,8 +120,9 @@ class HomeController extends Controller
 
         if (Auth::attempt(['national_code' => $national_code , 'password' => $password]) && Hash::check($password, $user->password)) {
             // Authentication passed...
-            Session::flash('success-login', 'خوش آمدید.');
+            Session::flash('success-login',  'خوش آمدید ' . $user->name . ' عزیز');
             return redirect()->intended('/home');
+
         }
     }
 //    ---------------------------------------------------

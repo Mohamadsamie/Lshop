@@ -47,7 +47,7 @@
                                     @endif
                                 </div>
                                 <div class="button-group">
-                                    <a class="btn-primary" href="#" ><span>افزودن به سبد</span></a>
+                                    <a class="btn-primary" href="{{route('cart.add', ['id'=> $product->id])}}" ><span>افزودن به سبد</span></a>
                                 </div>
                             </div>
                         @endforeach

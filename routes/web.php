@@ -48,6 +48,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
+Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('cart.remove');
 // user login route
 Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
 // user login route
