@@ -29,4 +29,10 @@ class CartController extends Controller
         $request->session()->put('cart', $cart);
         return back();
     }
+
+    public function getCart()
+    {
+        $cart = Session::has('cart') ? Session::get('cart') : null;
+        return view('frontend.cart.index', compact(['cart']));
+    }
 }

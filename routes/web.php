@@ -12,9 +12,10 @@
 */
 
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('/', 'Frontend\HomeController');
+
 
 //Route::group(['middleware'=>'admin'] , function () {
 //
@@ -39,17 +40,28 @@ Route::prefix('administrator')->group(function (){
     Route::resource('photos' , 'Backend\PhotoController');
     Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
     Route::resource('products' , 'Backend\ProductController');
+    Route::resource('coupons', 'Backend\CouponController');
 });
 
+Route::resource('/', 'Frontend\HomeController');
+
+// user login route
 Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
+// user login route
 
 Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
 Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('cart.remove');
-// user login route
-Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
-// user login route
+Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.cart');
+
+
+// frontend middleware
+Route::group(['middleware'=>'auth'], function() {
+    Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
+    Route::post('/coupon', 'Frontend\CouponController@addCoupon')->name('coupon.add');
+});
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+

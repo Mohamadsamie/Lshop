@@ -412,6 +412,9 @@
                         <li><a href="{{route('slides.index')}}"><i class="fa fa-circle-o"></i> لیست اسلایدرها</a></li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="{{route('coupons.index')}}"><i class="fa fa-ticket"></i><span>کد تخفیف</span></a>
+                </li>
 
                 {{--<li class="treeview">--}}
                     {{--<a href="#">--}}
