@@ -43,23 +43,23 @@ Route::prefix('administrator')->group(function (){
     Route::resource('coupons', 'Backend\CouponController');
 });
 
-Route::resource('/', 'Frontend\HomeController');
-
-// user login route
-Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
-Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
-// user login route
-
-Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
-Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('cart.remove');
-Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.cart');
-
-
 // frontend middleware
 Route::group(['middleware'=>'auth'], function() {
     Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
     Route::post('/coupon', 'Frontend\CouponController@addCoupon')->name('coupon.add');
 });
+
+Route::resource('/', 'Frontend\HomeController');
+// user login route start
+Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
+Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
+// user login route end
+Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
+Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('cart.remove');
+Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.cart');
+Route::get('/products/{slug}', 'Frontend\ProductController@getProduct')->name('product.single');
+
+
 
 Auth::routes();
 

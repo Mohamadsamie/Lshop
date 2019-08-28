@@ -8,16 +8,16 @@
     <title>فروشگاه اینترنتی سبز | Egreen</title>
     <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
     <!-- CSS Part Start-->
-    <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap-rtl.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
-    <link rel="stylesheet" type="text/css" href="css/owl.transitions.css" />
-    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-    <link rel="stylesheet" type="text/css" href="css/stylesheet-rtl.css" />
-    <link rel="stylesheet" type="text/css" href="css/responsive-rtl.css" />
-    <link rel="stylesheet" type="text/css" href="css/stylesheet-skin2.css" />
+    <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap-rtl.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="/css/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="/css/responsive-rtl.css" />
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet-skin2.css" />
     @yield('frontend-styles')
 
     <!-- CSS Part End-->
@@ -105,7 +105,7 @@
                 <div class="table-container">
                     <!-- Logo Start -->
                     <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-                        <div id="logo"><a href="{{url('/')}}"><img class="img-responsive" src="image/logo.png" title="MarketShop" alt="MarketShop" /></a></div>
+                        <div id="logo"><a href="{{url('/')}}"><img class="img-responsive" src="/image/logo.png" title="MarketShop" alt="MarketShop" /></a></div>
                     </div>
                     <!-- Logo End -->
                     <!-- Mini Cart Start-->
@@ -468,7 +468,7 @@
                                 <img data-toggle="tooltip" src="image/socialicons/google_plus.png" alt="Google+" title="Google+">
                             </a>
                             <a href="#" target="_blank">
-                                <img data-toggle="tooltip" src="image/socialicons/pinterest.png" alt="Pinterest" title="Pinterest">
+                                <img data-toggle="tooltip" src="/image/socialicons/pinterest.png" alt="Pinterest" title="Pinterest">
                             </a>
                             <a href="#" target="_blank">
                                 <img data-toggle="tooltip" src="image/socialicons/rss.png" alt="RSS" title="RSS">
@@ -500,12 +500,15 @@
 
 </div>
 <!-- JS Part Start-->
-<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.dcjqaccordion.min.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.easing-1.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.dcjqaccordion.min.js"></script>
+<script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/js/jquery.elevateZoom-3.0.8.min.js"></script>
+<script type="text/javascript" src="/js/swipebox/lib/ios-orientationchange-fix.js"></script>
+<script type="text/javascript" src="/js/swipebox/src/js/jquery.swipebox.min.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
 @yield('script-vuejs')
 @yield('fronted-scripts')
 
