@@ -35,6 +35,10 @@
                                 <input  type="radio" name="status" value="1" @if($product->status == 1) checked @endif ><span style="margin: 0 10px;">منتشر شده</span>
                             </div>
                             <div class="form-group">
+                                <label for="stock">موجودی انبار</label>
+                                <input value="{{$product->stock, old('price')}}" type="number" name="stock" class="form-control" placeholder="موجودی محصول را وارد کنید...">
+                            </div>
+                            <div class="form-group">
                                 <label for="price">قیمت محصول</label>
                                 <input value="{{$product->price, old('price')}}" type="number" name="price" class="form-control" placeholder="قیمت محصول را وارد کنید...">
                             </div>

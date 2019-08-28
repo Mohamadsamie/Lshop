@@ -41,6 +41,7 @@
                         <tr>
                             <th class="text-center">شناسه</th>
                             <th class="text-center">کد محصول</th>
+                            <th class="text-center">تعداد موجودی</th>
                             <th>عنوان</th>
                             <th class="text-center">عملیات</th>
                         </tr>
@@ -49,6 +50,7 @@
                             <tr>
                                 <td class="text-center">{{$product->id}}</td>
                                 <td class="text-center">{{$product->sku}}</td>
+                                <td class="text-center">{{$product->stock}}</td>
                                 <td>{{$product->title}}</td>
                                 <td class="text-center">
                                     <a class="btn btn-warning" href="{{route('products.edit', $product->id)}}">ویرایش</a>

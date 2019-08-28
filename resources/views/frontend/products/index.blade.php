@@ -33,7 +33,7 @@
                                 {{--<li><b>امتیازات خرید:</b> 700</li>--}}
                                 <li>
                                     <b>وضعیت موجودی :</b>
-                                    @if($product->status == 1)
+                                    @if($product->status == 1 && $product->stock > 0)
                                     <span class="instock">موجود</span>
                                     @else
                                     <span class="nostock">ناموجود</span>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="cart">
                                     <div>
-                                        @if($product->status == 1)
+                                        @if($product->status == 1 && $product->stock > 0)
                                             <a href="{{route('cart.add', ['id' => $product->id])}}" id="button-cart"  class="btn btn-primary btn-lg">افزودن به سبد</a>
                                         @else
                                             <a href="#" id="button-cart" class="btn btn-primary btn-lg disabled">کالا موجود نیست</a>

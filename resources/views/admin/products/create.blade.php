@@ -34,6 +34,10 @@
                                 <input  type="radio" name="status" value="1"><span style="margin: 0 10px;">منتشر شده</span>
                             </div>
                             <div class="form-group">
+                                <label for="stock">موجودی انبار</label>
+                                <input value="{{old('stock')}}" type="number" name="stock" class="form-control" placeholder="موجودی محصول را وارد کنید...">
+                            </div>
+                            <div class="form-group">
                                 <label for="price">قیمت محصول</label>
                                 <input value="{{old('price')}}" type="number" name="price" class="form-control" placeholder="قیمت محصول را وارد کنید...">
                             </div>

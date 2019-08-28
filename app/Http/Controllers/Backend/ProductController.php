@@ -68,6 +68,7 @@ class ProductController extends Controller
             $newProduct->slug = make_slug($newProduct->title);
         }
         $newProduct->status = $request->status;
+        $newProduct->stock = $request->stock;
         $newProduct->price = $request->price;
         $newProduct->discount_price = $request->discount_price;
         $newProduct->description = $request->description;
@@ -77,6 +78,7 @@ class ProductController extends Controller
         $newProduct->meta_keywords = $request->meta_keywords;
         $newProduct->user_id = 1;
 
+//        return $request->all();
         $newProduct->save();
 
 
@@ -135,6 +137,7 @@ class ProductController extends Controller
             $Product->slug = make_slug($Product->title);
         }
         $Product->status = $request->status;
+        $Product->stock = $request->stock;
         $Product->price = $request->price;
         $Product->discount_price = $request->discount_price;
         $Product->description = $request->description;
