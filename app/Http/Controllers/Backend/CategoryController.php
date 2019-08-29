@@ -48,6 +48,11 @@ class CategoryController extends Controller
 
        $category = new Category();
        $category->name = $request->input('name');
+        if ($request->input('slug')){
+            $category->slug = make_slug($request->input('slug'));
+        }   else {
+            $category->slug = make_slug($category->name);
+        }
        $category->parent_id = $request->input('category_parent');
        $category->meta_desc = $request->input('meta_desc');
        $category->meta_title = $request->input('meta_title');
@@ -81,7 +86,7 @@ class CategoryController extends Controller
             ->where('parent_id', null)
             ->get();
         $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact(['categories','category'])); //['categories'=> $categories, 'category' => $category] it's like compact
+        return view('admin.categories.edit', compact(['categories','category'])); //['categories'=> $categories, 'categories' => $categories] it's like compact
     }
 
     /**
@@ -95,6 +100,11 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->name  = $request->input('name');
+        if ($request->input('slug')){
+            $category->slug = make_slug($request->input('slug'));
+        }   else {
+            $category->slug = make_slug($category->name);
+        }
         $category->parent_id  = $request->input('category_parent');
         $category->meta_title = $request->input('meta_title');
         $category->meta_desc = $request->input('meta_desc');

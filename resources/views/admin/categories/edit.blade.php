@@ -18,6 +18,10 @@
                                 <label for="name">نام</label>
                                 <input type="text" name="name" class="form-control" value="{{$category->name}}" placeholder="عنوان دسته بندی را وارد کنید...">
                             </div>
+                            <div class="form-group">
+                                <label for="slug">نام مستعار</label>
+                                <input type="text" name="slug" class="form-control" value="{{$category->slug}}" placeholder="نام مستعار دسته بندی را وارد کنید...">
+                            </div>
 
                             <div class="form-group">
                                 <label for="category_parent">دسته والد</label>
@@ -26,7 +30,7 @@
                                     @foreach($categories as $category_data)
                                         <option value="{{$category_data->id}}" @if($category->parent_id == $category_data->id) selected @endif>{{$category_data->name}}</option>
                                         @if(count($category_data->childrenRecursive) > 0)
-                                            @include('admin.partials.category', ['categories'=>$category_data->childrenRecursive, 'level'=>1, 'selected_category'=>$category])
+                                            @include('admin.partials.categories', ['categories'=>$category_data->childrenRecursive, 'level'=>1, 'selected_category'=>$category])
                                         @endif
                                     @endforeach
                                 </select>

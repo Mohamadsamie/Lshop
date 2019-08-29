@@ -19,13 +19,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="slug">نام مستعار</label>
+                                <input type="text" name="slug" class="form-control" placeholder="نام مستعار دسته بندی را وارد کنید...">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="category_parent">دسته والد</label>
                                 <select name="category_parent" id="" class="form-control">
                                     <option value="">بدون والد</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                         @if(count($category->childrenRecursive) > 0)
-                                            @include('admin.partials.category', ['categories'=>$category->childrenRecursive, 'level'=>1])
+                                            @include('admin.partials.categories', ['categories'=>$category->childrenRecursive, 'level'=>1])
                                         @endif
                                     @endforeach
                                 </select>

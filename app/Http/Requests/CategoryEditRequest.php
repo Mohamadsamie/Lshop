@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryEditRequest extends FormRequest
 {
@@ -11,6 +12,14 @@ class CategoryEditRequest extends FormRequest
      *
      * @return bool
      */
+    protected function prepareForValidation()
+    {
+        if($this->input('slug')){
+            $this->merge(['slug' => make_slug($this->input('slug'))]);
+        }else{
+            $this->merge(['slug' => make_slug($this->input('name'))]);
+        }
+    }
     public function authorize()
     {
         return true;
@@ -24,7 +33,9 @@ class CategoryEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'slug' => Rule::unique('categories')->ignore(request()->category), //To avoid confliction in entire slug of the post!
+
         ];
     }
 
@@ -32,6 +43,7 @@ class CategoryEditRequest extends FormRequest
     {
         return [
             'name.required' => '.نام دسته نمیتواند خالی باشد',
+            'slug.unique' => 'نام مستعار قبلا انتخاب شده',
         ];
     }
 }

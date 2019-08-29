@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryCreateRequest extends FormRequest
 {
@@ -21,10 +22,20 @@ class CategoryCreateRequest extends FormRequest
      *
      * @return array
      */
+    protected function prepareForValidation()
+    {
+        if($this->input('slug')){
+            $this->merge(['slug' => make_slug($this->input('slug'))]);
+        }else{
+            $this->merge(['slug' => make_slug($this->input('name'))]);
+        }
+    }
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
+            'slug' => Rule::unique('categories')->ignore(request()->category), //To avoid confliction in entire slug of the post!
+
         ];
     }
 
@@ -32,7 +43,7 @@ class CategoryCreateRequest extends FormRequest
     {
         return [
             'name.required' => 'انتخاب نام برای دسته جدید الزامی میباشد',
-            'name.unique' => 'دسته مورد نظر قبلا ایجاد شده است',
+            'slug.unique' => 'نام مستعار مورد نظر قبلا ایجاد شده است',
         ];
     }
 }
