@@ -24,7 +24,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container" id="app">
     <!-- Breadcrumb Start-->
     <ul class="breadcrumb">
         <li><a href="index.html"><i class="fa fa-home"></i></a></li>

@@ -24,6 +24,8 @@ Route::prefix('api')->group(function (){
     Route::get('categories' , 'Backend\CategoryController@apiIndex')->name('api.categories');
     Route::post('categories/attribute' , 'Backend\CategoryController@apiIndexAttribute')->name('api.categories.attribute');
     Route::get('/cities/{provinceId}', 'Auth\RegisterController@getAllCities');
+    Route::get('/products/{id}', 'Frontend\ProductController@apiGetProduct');
+    Route::get('/sort-products/{id}/{sort}/{paginate}', 'Frontend\ProductController@apiGetSortedProduct');
 });
 
 
@@ -50,6 +52,7 @@ Route::group(['middleware'=>'auth'], function() {
 });
 
 Route::resource('/', 'Frontend\HomeController');
+//Route::resource('/category', 'Frontend\MenuController');
 // user login route start
 Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
 Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
@@ -58,6 +61,7 @@ Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart
 Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('cart.remove');
 Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.cart');
 Route::get('/products/{slug}', 'Frontend\ProductController@getProduct')->name('product.single');
+Route::get('/category/{slug}/', 'Frontend\ProductController@getProductByCategory')->name('category.index');
 
 
 

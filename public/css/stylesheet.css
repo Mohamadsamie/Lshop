@@ -804,6 +804,7 @@ a:focus { outline:none; }
 .product-filter .form-control {
 	padding:2px 12px;
 	height:auto;
+	width: auto;
 }
 .product-list.row, .products-category.row { margin:0; }
 /* Carousel */

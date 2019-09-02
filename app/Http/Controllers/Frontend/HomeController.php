@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Banner;
 use App\Brand;
+use App\Category;
 use App\Product;
 use App\Slide;
 use App\User;
@@ -19,6 +20,7 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -26,15 +28,19 @@ class HomeController extends Controller
         $brands = Brand::with('photo')->orderBy('created_at', 'desc')->limit(10)->get();
         $slides = Slide::with('photo')->orderBy('created_at', 'desc')->limit(5)->get();
         $latestProduct = Product::orderBy('created_at', 'desc')->limit(10)->get();
+        $discountedProduct = Product::orderBy('created_at', 'desc')->limit(10)->get();
         $banners = Banner::with('photo')->orderBy('created_at', 'desc')->limit(6)->get();
+//        $categories = Category::with('childrenRecursive')->where('parent_id' , null)->get();
         return view('frontend.home.index', compact([
             'latestProduct',
             'banners',
             'slides',
-            'brands'
+            'discountedProduct',
+            'brands',
             ]));
 
     }
+
 
     /**
      * Show the form for creating a new resource.

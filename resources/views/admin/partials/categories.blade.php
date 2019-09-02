@@ -2,14 +2,14 @@
     @foreach($categories as $sub_category)
         <option value="{{$sub_category->id}}" @if($selected_category->parent_id == $sub_category->id) selected @endif>{{str_repeat('-----', $level)}} {{$sub_category->name}}</option>
         @if(count($sub_category->childrenRecursive) > 0)
-            @include('admin.partials.category', ['categories' => $sub_category->childrenRecursive, 'level' => $level+1, 'selected_category'=>$selected_category])
+            @include('admin.partials.categories', ['categories' => $sub_category->childrenRecursive, 'level' => $level+1, 'selected_category'=>$selected_category])
         @endif
     @endforeach
 @else
     @foreach($categories as $sub_category)
         <option value="{{$sub_category->id}}">{{str_repeat('-----', $level)}} {{$sub_category->name}}</option>
         @if(count($sub_category->childrenRecursive) > 0)
-            @include('admin.partials.category', ['categories' => $sub_category->childrenRecursive, 'level' => $level+1])
+            @include('admin.partials.categories', ['categories' => $sub_category->childrenRecursive, 'level' => $level+1])
         @endif
     @endforeach
 @endif

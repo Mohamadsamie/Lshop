@@ -23,7 +23,7 @@
     <!-- CSS Part End-->
 </head>
 <body>
-<div class="wrapper-wide" id="app">
+<div class="wrapper-wide">
     <div id="header">
         <!-- Top Bar Start-->
         <nav id="top" class="htop">
@@ -105,7 +105,7 @@
                 <div class="table-container">
                     <!-- Logo Start -->
                     <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-                        <div id="logo"><a href="{{url('/')}}"><img class="img-responsive" src="/image/logo.png" title="MarketShop" alt="MarketShop" /></a></div>
+                        <div id="logo"><a href="{{url('/')}}"><img class="img-responsive" src="/image/logo.png" title="Egreen" alt="Egreen" /></a></div>
                     </div>
                     <!-- Logo End -->
                     <!-- Mini Cart Start-->
@@ -233,8 +233,10 @@
             <div class="container">
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a class="home_link" title="خانه" href="index.html">خانه</a></li>
-                        <li class="dropdown"><a href="category.html">مواد غذایی</a>
+                        <li><a class="home_link" title="خانه" href="{{url('/')}}">خانه</a></li>
+                        {{-----------------------------------------}}
+
+                        <li class="dropdown"><a href="{{route('category.index', ['slug' => 'مواد-غذایی'])}}">مواد غذایی</a>
                             <div class="dropdown-menu">
                                 <ul>
                                     <li><a href="category.html">مواد پروتئینی <span>&rsaquo;</span></a>
@@ -248,6 +250,7 @@
                                             </ul>
                                         </div>
                                     </li>
+                                    <li><a href="{{route('category.index', ['slug' => 'غذای-آماده'])}}">غذای آماده</a></li>
                                     <li><a href="category.html" >نوشیدنی ها</a> </li>
                                     <li><a href="category.html">خوار و بار<span>&rsaquo;</span></a>
                                         <div class="dropdown-menu">
@@ -319,46 +322,50 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="menu_brands dropdown"><a href="#">برند ها</a>
-                            <div class="dropdown-menu">
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="اپل" alt="اپل" /></a><a href="#">اپل</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="کنون" alt="کنون" /></a><a href="#">کنون</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"> <a href="#"><img src="image/product/hp_logo-60x60.jpg" title="اچ پی" alt="اچ پی" /></a><a href="#">اچ پی</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/htc_logo-60x60.jpg" title="اچ تی سی" alt="اچ تی سی" /></a><a href="#">اچ تی سی</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/palm_logo-60x60.jpg" title="پالم" alt="پالم" /></a><a href="#">پالم</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/sony_logo-60x60.jpg" title="سونی" alt="سونی" /></a><a href="#">سونی</a> </div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test" alt="test" /></a><a href="#">تست</a> </div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="test 3" alt="test 3" /></a><a href="#">تست 3</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test 5" alt="test 5" /></a><a href="#">تست 5</a> </div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test 6" alt="test 6" /></a><a href="#">تست 6</a></div>
-                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="test 7" alt="test 7" /></a><a href="#">تست 7</a> </div>
+
+                        {{-----------------------------------------}}
+
+                        {{--<li class="menu_brands dropdown"><a href="#">برند ها</a>--}}
+                            {{--<div class="dropdown-menu">--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="اپل" alt="اپل" /></a><a href="#">اپل</a></div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="کنون" alt="کنون" /></a><a href="#">کنون</a></div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"> <a href="#"><img src="image/product/hp_logo-60x60.jpg" title="اچ پی" alt="اچ پی" /></a><a href="#">اچ پی</a></div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/htc_logo-60x60.jpg" title="اچ تی سی" alt="اچ تی سی" /></a><a href="#">اچ تی سی</a></div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/palm_logo-60x60.jpg" title="پالم" alt="پالم" /></a><a href="#">پالم</a></div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/sony_logo-60x60.jpg" title="سونی" alt="سونی" /></a><a href="#">سونی</a> </div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test" alt="test" /></a><a href="#">تست</a> </div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="test 3" alt="test 3" /></a><a href="#">تست 3</a></div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test 5" alt="test 5" /></a><a href="#">تست 5</a> </div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/canon_logo-60x60.jpg" title="test 6" alt="test 6" /></a><a href="#">تست 6</a></div>--}}
+                                {{--<div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="image/product/apple_logo-60x60.jpg" title="test 7" alt="test 7" /></a><a href="#">تست 7</a> </div>--}}
 
 
-                            </div>
-                        </li>
-                        <li class="dropdown information-link"><a>برگه ها</a>
-                            <!--<div class="dropdown-menu">-->
-                            <!--<ul>-->
-                            <!--<li><a href="login.html">ورود</a></li>-->
-                            <!--<li><a href="register.html">ثبت نام</a></li>-->
-                            <!--<li><a href="category.html">دسته بندی (شبکه/لیست)</a></li>-->
-                            <!--<li><a href="product.html">محصولات</a></li>-->
-                            <!--<li><a href="cart.html">سبد خرید</a></li>-->
-                            <!--<li><a href="checkout.html">تسویه حساب</a></li>-->
-                            <!--<li><a href="compare.html">مقایسه</a></li>-->
-                            <!--<li><a href="wishlist.html">لیست آرزو</a></li>-->
-                            <!--<li><a href="search.html">جستجو</a></li>-->
-                            <!--</ul>-->
-                            <!--<ul>-->
-                            <!--<li><a href="about-us.html">درباره ما</a></li>-->
-                            <!--<li><a href="404.html">404</a></li>-->
-                            <!--<li><a href="elements.html">عناصر</a></li>-->
-                            <!--<li><a href="faq.html">سوالات متداول</a></li>-->
-                            <!--<li><a href="sitemap.html">نقشه سایت</a></li>-->
-                            <!--<li><a href="contact-us.html">تماس با ما</a></li>-->
-                            <!--</ul>-->
-                            <!--</div>-->
-                        </li>
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropdown information-link"><a>برگه ها</a>--}}
+                            {{--<!--<div class="dropdown-menu">-->--}}
+                            {{--<!--<ul>-->--}}
+                            {{--<!--<li><a href="login.html">ورود</a></li>-->--}}
+                            {{--<!--<li><a href="register.html">ثبت نام</a></li>-->--}}
+                            {{--<!--<li><a href="category.html">دسته بندی (شبکه/لیست)</a></li>-->--}}
+                            {{--<!--<li><a href="product.html">محصولات</a></li>-->--}}
+                            {{--<!--<li><a href="cart.html">سبد خرید</a></li>-->--}}
+                            {{--<!--<li><a href="checkout.html">تسویه حساب</a></li>-->--}}
+                            {{--<!--<li><a href="compare.html">مقایسه</a></li>-->--}}
+                            {{--<!--<li><a href="wishlist.html">لیست آرزو</a></li>-->--}}
+                            {{--<!--<li><a href="search.html">جستجو</a></li>-->--}}
+                            {{--<!--</ul>-->--}}
+                            {{--<!--<ul>-->--}}
+                            {{--<!--<li><a href="about-us.html">درباره ما</a></li>-->--}}
+                            {{--<!--<li><a href="404.html">404</a></li>-->--}}
+                            {{--<!--<li><a href="elements.html">عناصر</a></li>-->--}}
+                            {{--<!--<li><a href="faq.html">سوالات متداول</a></li>-->--}}
+                            {{--<!--<li><a href="sitemap.html">نقشه سایت</a></li>-->--}}
+                            {{--<!--<li><a href="contact-us.html">تماس با ما</a></li>-->--}}
+                            {{--<!--</ul>-->--}}
+                            {{--<!--</div>-->--}}
+                        {{--</li>--}}
+
                         <li class="custom-link-right"><a href="#" target="_blank"> همین حالا بخرید!</a></li>
                     </ul>
                 </div>
@@ -459,19 +466,19 @@
                         <div class="social">
                             <h5>ما را در شبکه های اجتماعی دنبال کنید</h5>
                             <a href="#" target="_blank">
-                                <img data-toggle="tooltip" src="image/socialicons/facebook.png" alt="Facebook" title="Facebook">
+                                <img data-toggle="tooltip" src="/image/socialicons/facebook.png" alt="Facebook" title="Facebook">
                             </a>
                             <a href="#" target="_blank">
-                                <img data-toggle="tooltip" src="image/socialicons/twitter.png" alt="Twitter" title="Twitter">
+                                <img data-toggle="tooltip" src="/image/socialicons/twitter.png" alt="Twitter" title="Twitter">
                             </a>
                             <a href="#" target="_blank">
-                                <img data-toggle="tooltip" src="image/socialicons/google_plus.png" alt="Google+" title="Google+">
+                                <img data-toggle="tooltip" src="/image/socialicons/google_plus.png" alt="Google+" title="Google+">
                             </a>
                             <a href="#" target="_blank">
                                 <img data-toggle="tooltip" src="/image/socialicons/pinterest.png" alt="Pinterest" title="Pinterest">
                             </a>
                             <a href="#" target="_blank">
-                                <img data-toggle="tooltip" src="image/socialicons/rss.png" alt="RSS" title="RSS">
+                                <img data-toggle="tooltip" src="/image/socialicons/rss.png" alt="RSS" title="RSS">
                             </a>
                         </div>
                     </div>

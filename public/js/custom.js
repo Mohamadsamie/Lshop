@@ -261,7 +261,7 @@ $(".qtyBtn").on("click", function() {
     Product List
 ----------------------------------------------------- */
 $('#list-view').on("click", function() {
-	$(".products-category > .clearfix.visible-lg-block").remove();
+	$(".products-categories > .clearfix.visible-lg-block").remove();
 	$('#content .product-layout').attr('class', 'product-layout product-list col-xs-12');
   localStorage.setItem('display', 'list');		
 	$('.btn-group').find('#list-view').addClass('selected');
@@ -277,33 +277,33 @@ $(document).on('click', '#grid-view', function(e){
 		
 $screensize = $(window).width();
     if ($screensize > 1199) {
-		$(".products-category > .clearfix").remove();
+		$(".products-categories > .clearfix").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block"></span>');
     }
     if ($screensize < 1199) {
-		$(".products-category > .clearfix").remove();
+		$(".products-categories > .clearfix").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block visible-md-block"></span>');
     }
 	if ($screensize < 991) {
-		$(".products-category > .clearfix").remove();
+		$(".products-categories > .clearfix").remove();
         $('.product-grid:nth-child(3n)').after('<span class="clearfix visible-lg-block visible-sm-block"></span>');
     }
 $( window ).resize(function() {
     $screensize = $(window).width();
     if ($screensize > 1199) {
-        $(".products-category > .clearfix").remove();
+        $(".products-categories > .clearfix").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block"></span>');
     } 
     if ($screensize < 1199) {
-        $(".products-category > .clearfix").remove();
+        $(".products-categories > .clearfix").remove();
         $('.product-grid:nth-child(4n)').after('<span class="clearfix visible-lg-block visible-md-block"></span>');
     }
 	if ($screensize < 991) {
-        $(".products-category > .clearfix").remove();
+        $(".products-categories > .clearfix").remove();
         $('.product-grid:nth-child(3n)').after('<span class="clearfix visible-lg-block visible-sm-block"></span>');
     }
 	if ($screensize < 767) {
-        $(".products-category > .clearfix").remove();
+        $(".products-categories > .clearfix").remove();
     }
 });
 localStorage.setItem('display', 'grid');
