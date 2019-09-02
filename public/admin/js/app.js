@@ -1949,6 +1949,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3000,9 +3001,9 @@ var render = function() {
                   : _vm._e()
               ]),
               _vm._v(" "),
-              product.status === 1 && product.stock !== 0
-                ? _c("div", { staticClass: "button-group" }, [
-                    _c(
+              _c("div", { staticClass: "button-group" }, [
+                product.status === 1 && product.stock !== 0
+                  ? _c(
                       "a",
                       {
                         staticClass: "btn-primary",
@@ -3012,8 +3013,8 @@ var render = function() {
                       },
                       [_c("span", [_vm._v("افزودن به سبد")])]
                     )
-                  ])
-                : _vm._e()
+                  : _vm._e()
+              ])
             ])
           ]
         )

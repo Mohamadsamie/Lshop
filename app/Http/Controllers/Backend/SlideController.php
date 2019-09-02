@@ -82,7 +82,8 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        //
+        $slide = Slide::with('photo')->where('id', $id)->first();
+        return view('admin.slides.edit', compact(['slide']));
     }
 
     /**
@@ -94,7 +95,14 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $slide = Slide::findOrFail($id);
+        $slide->alt = $request->input('alt');
+        $slide->link = $request->input('link');
+        $slide->photo_id = $request->input('photo_id');
+        $slide->save();
+
+        Session::flash('edit-slide', 'اسلاید با موفقیت ویرایش شد');
+        return redirect('/administrator/slides');
     }
 
     /**
@@ -105,6 +113,9 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $slide = Slide::findOrFail($id);
+        $slide->delete();
+        Session::flash('delete-slide', 'اسلاید با موفقیت حذف شد');
+        return redirect('/administrator/slides');
     }
 }

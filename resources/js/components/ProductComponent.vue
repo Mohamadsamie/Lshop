@@ -57,8 +57,9 @@
                         <p v-if="!product.discount_price" class="price"> {{product.price}} تومان </p>
 
                     </div>
-                    <div class="button-group" v-if="product.status === 1 && product.stock !== 0">
-                        <a class="btn-primary" :href="'http://egreen.test/add-to-cart/' + product.id"><span>افزودن به سبد</span></a>
+                    <div class="button-group">
+                        <a class="btn-primary" v-if="product.status === 1 && product.stock !== 0" :href="'http://egreen.test/add-to-cart/' + product.id"><span>افزودن به سبد</span></a>
+                        <!--<a href="#" v-else id="button-cart" class="btn btn-primary btn-lg disabled">ناموجود</a>-->
                     </div>
                     <!--<div class="button-group" v-if="product.status !== 1">-->
                         <!--<a href="#" id="button-cart" class="btn btn-primary btn-lg disabled">ناموجود</a>-->
