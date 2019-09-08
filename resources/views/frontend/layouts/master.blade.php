@@ -90,10 +90,26 @@
                         <!--</div>-->
                     </div>
                     <div id="top-links" class="nav pull-right flip">
-                        <ul>
-                            <li><a href="{{route('login')}}">ورود</a></li>
-                            <li><a href="{{route('register')}}">ثبت نام</a></li>
-                        </ul>
+                        @if(Auth::check())
+                            <ul>
+                                <li><a href="{{route('logout')}}"  onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">خروج</a></li>
+                                <li><a href="{{route('user.profile')}}">پروفایل کاربری</a></li>
+
+                            </ul>
+                            <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+                                @csrf
+                            </form>
+                        @else
+                            <ul>
+                                <li><a href="{{route('login')}}">ورود</a></li>
+                                <li><a href="{{route('register')}}">ثبت نام</a></li>
+                            </ul>
+                        @endif
+                        {{--<ul>--}}
+                            {{--<li><a href="{{route('login')}}">ورود</a></li>--}}
+                            {{--<li><a href="{{route('register')}}">ثبت نام</a></li>--}}
+                        {{--</ul>--}}
                     </div>
                 </div>
             </div>

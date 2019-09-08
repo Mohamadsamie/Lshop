@@ -76,6 +76,11 @@ class UserController extends Controller
             return redirect('/login');
         }
     }
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('frontend.profile.index', compact(['user']));
+    }
 
 
 
