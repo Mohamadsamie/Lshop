@@ -32,6 +32,7 @@ Route::prefix('api')->group(function (){
 Route::prefix('administrator')->group(function (){
     Route::get('/' , 'Backend\MainController@mainPage')->name('administrator');
     Route::resource('categories' , 'Backend\CategoryController');
+    Route::resource('users' , 'Backend\UserController');
     Route::get('/categories/{id}/settings', 'Backend\CategoryController@indexSetting')->name('categories.indexSetting');
     Route::post('/categories/{id}/settings', 'Backend\CategoryController@saveSetting')->name('categories.saveSetting');
     Route::resource('attributes-group' , 'Backend\AttributeGroupController');

@@ -8,12 +8,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+    @yield('styles')
 {{--<link rel="stylesheet" href="admin/bootstrap/css/bootstrap.min.css">--}}
     {{--<!-- Font Awesome -->--}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    {{--<!-- Ionicons -->--}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-@yield('styles')
+
     {{--<!-- Theme style -->--}}
     {{--<link rel="stylesheet" href="admin/dist/css/AdminLTE.min.css">--}}
     {{--<!-- AdminLTE Skins. Choose a skin from the css/skins--}}
@@ -363,6 +361,16 @@
                         {{--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i>نمودار Inline charts</a></li>--}}
                     {{--</ul>--}}
                 {{--</li>--}}
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-user"></i>
+                        <span> کاربران</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> لیست کاربران</a></li>
+                    </ul>
+                </li>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-cart-plus"></i>

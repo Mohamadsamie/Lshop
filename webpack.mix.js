@@ -41,6 +41,7 @@ mix.scripts([
     'resources/admin/plugins/moment.min.js',
     'resources/admin/plugins/daterangepicker/daterangepicker.js',
     'resources/admin/plugins/datepicker/bootstrap-datepicker.js',
+    'resources/admin/plugins/datepicker/locales/bootstrap-datepicker.fa.js',
     'resources/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
     'resources/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
     'resources/admin/plugins/slimScroll/jquery.slimscroll.min.js',

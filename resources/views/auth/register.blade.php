@@ -82,10 +82,10 @@
                         <label class="col-sm-2 control-label">جنسیت</label>
                         <div class="col-sm-10">
                             <label class="radio-inline">
-                                <input type="radio" value="1" name="gender">
+                                <input type="radio" value="male" name="gender">
                                 مرد</label>
                             <label class="radio-inline">
-                                <input type="radio"  value="0" name="gender">
+                                <input type="radio"  value="female" name="gender">
                                 زن</label>
                         </div>
                     </div>
