@@ -17,12 +17,12 @@
                     <div class="row product-info">
                         <div class="col-sm-6">
                             <div class="image">
-                                <img class="img-responsive" style="text-align: center !important;" itemprop="image" id="zoom_01" src="{{$product->photos[0]->path}}" title="لپ تاپ ایلین ور" alt="لپ تاپ ایلین ور" data-zoom-image="{{$product->photos[0]->path}}" />
+                                <img class="img-responsive" style="text-align: center !important;" itemprop="image" id="zoom_01" src="{{$product->photos[0]->path}}"  data-zoom-image="{{$product->photos[0]->path}}" />
                             </div>
                             <div class="center-block text-center"><span class="zoom-gallery"><i class="fa fa-search"></i> برای مشاهده گالری روی تصویر کلیک کنید</span></div>
                             <div class="image-additional" id="gallery_01">
                                 @foreach($product->photos as $photo)
-                                    <a class="thumbnail" href="#" data-zoom-image="{{$photo->path}}" data-image="{{$photo->path}}" title="لپ تاپ ایلین ور"> <img src="{{$photo->path}}" title="لپ تاپ ایلین ور" alt = "لپ تاپ ایلین ور"/></a>
+                                    <a class="thumbnail" href="#" data-zoom-image="{{$photo->path}}" data-image="{{$photo->path}}" title="{{$product->title}}"> <img src="{{$photo->path}}" title="{{$product->title}}" alt ="{{$product->title}}"/></a>
                                 @endforeach
                             </div>
                         </div>
@@ -53,17 +53,17 @@
                                 </li>
                             </ul>
                             <div id="product">
-                                <h3 class="subtitle">انتخاب های در دسترس</h3>
-                                <div class="form-group required">
-                                    <label class="control-label">رنگ</label>
-                                    <select class="form-control" id="input-option200" name="option[200]">
-                                        <option value=""> --- لطفا انتخاب کنید --- </option>
-                                        <option value="4">مشکی </option>
-                                        <option value="3">نقره ای </option>
-                                        <option value="1">سبز </option>
-                                        <option value="2">آبی </option>
-                                    </select>
-                                </div>
+                                {{--<h3 class="subtitle">انتخاب های در دسترس</h3>--}}
+                                {{--<div class="form-group required">--}}
+                                    {{--<label class="control-label">رنگ</label>--}}
+                                    {{--<select class="form-control" id="input-option200" name="option[200]">--}}
+                                        {{--<option value=""> --- لطفا انتخاب کنید --- </option>--}}
+                                        {{--<option value="4">مشکی </option>--}}
+                                        {{--<option value="3">نقره ای </option>--}}
+                                        {{--<option value="1">سبز </option>--}}
+                                        {{--<option value="2">آبی </option>--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
                                 <div class="cart">
                                     <div>
                                         @if($product->status == 1 && $product->stock > 0)
