@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="/css/owl.carousel.css" />
     <link rel="stylesheet" type="text/css" href="/css/owl.transitions.css" />
+    <link rel="stylesheet" type="text/css" href="/css/swipebox.css" />
     <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
     <link rel="stylesheet" type="text/css" href="/css/stylesheet-rtl.css" />
     <link rel="stylesheet" type="text/css" href="/css/responsive-rtl.css" />

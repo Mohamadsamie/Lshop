@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('sku')->unique();
             $table->string('slug')->unique();
             $table->tinyInteger('status');
-            $table->Integer('stock');
+            $table->Integer('stock')->nullable();
             $table->float('price');
             $table->float('discount_price')->nullable();
             $table->text('description');

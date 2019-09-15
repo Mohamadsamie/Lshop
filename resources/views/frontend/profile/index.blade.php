@@ -10,6 +10,9 @@
 
         <div class="row">
             <aside id="column-right" class="col-sm-3 hidden-xs">
+                <div class="alert alert-success">
+                    <p> {{$user->name . ' ' . $user->last_name}} خوش آمدید.</p>
+                </div>
                 <h3 class="subtitle">حساب کاربری</h3>
                 <div class="list-group">
                     <ul class="list-item">
@@ -27,9 +30,7 @@
             </aside>
             <!--Middle Part Start-->
             <div id="content" class="col-sm-9">
-                <div class="alert alert-success">
-                    <p>{{$user->name . ' ' . $user->last_name}} به حساب کاربری خود خوش آمدید</p>
-                </div>
+
             </div>
             <!--Middle Part End -->
         </div>

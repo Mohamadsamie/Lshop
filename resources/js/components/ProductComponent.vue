@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-5">
                     <div class="btn-group">
-                        <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i></button>
+                        <!--<button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="Grid"><i class="fa fa-th"></i></button>-->
                         <!--<button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i></button>-->
                     </div>
                 </div>
@@ -58,12 +58,10 @@
 
                     </div>
                     <div class="button-group">
-                        <a class="btn-primary" v-if="product.status === 1 && product.stock !== 0" :href="'http://egreen.test/add-to-cart/' + product.id"><span>افزودن به سبد</span></a>
-                        <!--<a href="#" v-else id="button-cart" class="btn btn-primary btn-lg disabled">ناموجود</a>-->
+                        <!--<a class="btn-primary" v-if="product.status === 1 || product.stock !== 0" :href="'http://egreen.test/add-to-cart/' + product.id"><span>افزودن به سبد</span></a>-->
+                        <a :href="'http://egreen.test/products/' + product.slug"   class="btn-primary">مشاهده محصول</a>
+                        <!--<a class="btn-primary" :href="'http://egreen.test/add-to-cart/' + product.id"><span>افزودن به سبد</span></a>-->
                     </div>
-                    <!--<div class="button-group" v-if="product.status !== 1">-->
-                        <!--<a href="#" id="button-cart" class="btn btn-primary btn-lg disabled">ناموجود</a>-->
-                    <!--</div>-->
                 </div>
             </div>
         </div>

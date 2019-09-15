@@ -1948,8 +1948,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3002,18 +3000,16 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "button-group" }, [
-                product.status === 1 && product.stock !== 0
-                  ? _c(
-                      "a",
-                      {
-                        staticClass: "btn-primary",
-                        attrs: {
-                          href: "http://egreen.test/add-to-cart/" + product.id
-                        }
-                      },
-                      [_c("span", [_vm._v("افزودن به سبد")])]
-                    )
-                  : _vm._e()
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn-primary",
+                    attrs: {
+                      href: "http://egreen.test/products/" + product.slug
+                    }
+                  },
+                  [_vm._v("مشاهده محصول")]
+                )
               ])
             ])
           ]
@@ -3060,21 +3056,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-4 col-sm-5" }, [
-      _c("div", { staticClass: "btn-group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            attrs: {
-              type: "button",
-              id: "grid-view",
-              "data-toggle": "tooltip",
-              title: "Grid"
-            }
-          },
-          [_c("i", { staticClass: "fa fa-th" })]
-        )
-      ])
+      _c("div", { staticClass: "btn-group" })
     ])
   },
   function() {

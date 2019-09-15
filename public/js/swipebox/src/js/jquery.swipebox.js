@@ -45,10 +45,7 @@
 							<div id="swipebox-title"></div>\
 						</div>\
 						<div id="swipebox-bottom-bar">\
-							<div id="swipebox-arrows">\
-								<a id="swipebox-prev"></a>\
-								<a id="swipebox-next"></a>\
-							</div>\
+							\
 						</div>\
 						<a id="swipebox-close"></a>\
 					</div>\
