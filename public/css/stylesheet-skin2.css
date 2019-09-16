@@ -106,8 +106,10 @@ a:hover, a b:hover, .category .tabs li a:hover, .sitemap li a:hover, .pagination
 /*===================================================================================*/
 /*  Buttons
 /*===================================================================================*/
-.btn-primary { background-color:#cfe160; }
+.btn-primary { background-color:#359169; }
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { background-color:#000; }
+#forget-password a {color: #359169}
+#forget-password a:hover {color: #000}
 /*===================================================================================*/
 /*  Footer
 /*===================================================================================*/

@@ -82,6 +82,4 @@ class UserController extends Controller
         return view('frontend.profile.index', compact(['user']));
     }
 
-
-
 }

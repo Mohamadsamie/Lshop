@@ -28,11 +28,11 @@
                             <label class="control-label" for="national_code">کد ملی</label>
                             <input type="text" name="national_code" value="" placeholder="کد ملی"  class="form-control" />
                         </div>
-                        <div class="form-group">
+                        <div id="forget-password" class="form-group">
                             <label class="control-label" for="input-password">رمز عبور</label>
                             <input type="password" name="password" value="" placeholder="رمز عبور" id="input-password" class="form-control" />
                             <br />
-                            <a href="{{route('password.request')}}">فراموشی رمز عبور</a></div>
+                            <a  href="{{route('password.request')}}">فراموشی رمز عبور</a></div>
                             <input type="submit" value="ورود" class="btn btn-primary" />
                     </form>
                  </div>
