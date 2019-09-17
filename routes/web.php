@@ -28,23 +28,25 @@ Route::prefix('api')->group(function (){
     Route::get('/sort-products/{id}/{sort}/{paginate}', 'Frontend\ProductController@apiGetSortedProduct');
 });
 
-
-Route::prefix('administrator')->group(function (){
-    Route::get('/' , 'Backend\MainController@mainPage')->name('administrator');
-    Route::resource('categories' , 'Backend\CategoryController');
-    Route::resource('users' , 'Backend\UserController');
-    Route::get('/categories/{id}/settings', 'Backend\CategoryController@indexSetting')->name('categories.indexSetting');
-    Route::post('/categories/{id}/settings', 'Backend\CategoryController@saveSetting')->name('categories.saveSetting');
-    Route::resource('attributes-group' , 'Backend\AttributeGroupController');
-    Route::resource('attributes-value' , 'Backend\AttributeValueController');
-    Route::resource('brands' , 'Backend\BrandCntroller');
-    Route::resource('banners' , 'Backend\BannerController');
-    Route::resource('slides' , 'Backend\SlideController');
-    Route::resource('photos' , 'Backend\PhotoController');
-    Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
-    Route::resource('products' , 'Backend\ProductController');
-    Route::resource('coupons', 'Backend\CouponController');
+Route::group(['middleware'=>'admin'], function() {
+    Route::prefix('administrator')->group(function (){
+        Route::get('/' , 'Backend\MainController@mainPage')->name('administrator');
+        Route::resource('categories' , 'Backend\CategoryController');
+        Route::resource('users' , 'Backend\UserController');
+        Route::get('/categories/{id}/settings', 'Backend\CategoryController@indexSetting')->name('categories.indexSetting');
+        Route::post('/categories/{id}/settings', 'Backend\CategoryController@saveSetting')->name('categories.saveSetting');
+        Route::resource('attributes-group' , 'Backend\AttributeGroupController');
+        Route::resource('attributes-value' , 'Backend\AttributeValueController');
+        Route::resource('brands' , 'Backend\BrandCntroller');
+        Route::resource('banners' , 'Backend\BannerController');
+        Route::resource('slides' , 'Backend\SlideController');
+        Route::resource('photos' , 'Backend\PhotoController');
+        Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
+        Route::resource('products' , 'Backend\ProductController');
+        Route::resource('coupons', 'Backend\CouponController');
+    });
 });
+
 
 // frontend middleware
 Route::group(['middleware'=>'auth'], function() {

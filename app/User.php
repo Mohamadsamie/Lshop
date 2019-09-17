@@ -63,4 +63,12 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+    public function isAdmin()
+    {
+        foreach ($this->roles as $role)
+            if ($role->name == 'مدیر' && $this->status == 1){
+                return true;
+            }
+        return false;
+    }
 }
