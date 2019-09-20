@@ -13,6 +13,8 @@
 
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,7 +29,7 @@ Route::prefix('api')->group(function (){
     Route::get('/products/{id}', 'Frontend\ProductController@apiGetProduct');
     Route::get('/sort-products/{id}/{sort}/{paginate}', 'Frontend\ProductController@apiGetSortedProduct');
 });
-
+// backend middleware
 Route::group(['middleware'=>'admin'], function() {
     Route::prefix('administrator')->group(function (){
         Route::get('/' , 'Backend\MainController@mainPage')->name('administrator');
