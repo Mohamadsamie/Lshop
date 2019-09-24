@@ -57,7 +57,6 @@ Route::group(['middleware'=>'auth'], function() {
 });
 
 Route::resource('/', 'Frontend\HomeController');
-//Route::resource('/category', 'Frontend\MenuController');
 // user login route start
 Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
 Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
@@ -67,6 +66,7 @@ Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('ca
 Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.cart');
 Route::get('/products/{slug}', 'Frontend\ProductController@getProduct')->name('product.single');
 Route::get('/category/{slug}/', 'Frontend\ProductController@getProductByCategory')->name('category.index');
+Route::get('/search', 'Frontend\SearchController@search')->name('search');
 
 
 

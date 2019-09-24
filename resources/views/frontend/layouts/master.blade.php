@@ -33,8 +33,8 @@
                     <div class="pull-left flip left-top">
                         <div class="links">
                             <ul>
-                                <li class="mobile"><i class="fa fa-phone"></i>07631234567</li>
-                                <li class="email"><a href="mailto:info@marketshop.com"><i class="fa fa-envelope"></i>info@marketshop.com</a></li>
+                                <li class="mobile"><i class="fa fa-phone"></i></li>
+                                <li class="email"><a href=""><i class="fa fa-envelope"></i></a></li>
                                 <div class="dropdown-menu custom_block">
                                     <ul>
                                         <li>
@@ -233,10 +233,24 @@
                     <!-- Mini Cart End-->
                     <!-- جستجو Start-->
                     <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
-                        <div id="search" class="input-group">
-                            <input id="filter_name" type="text" name="search" value="" placeholder="جستجو" class="form-control input-lg" />
-                            <button type="button" class="button-search"><i class="fa fa-search"></i></button>
-                        </div>
+                        <form method="get" action="{{route('search')}}">
+                            @csrf
+                            <div id="search" class="input-group">
+                                <input required="required" id="filter_name" type="text" name="search" value="" placeholder="جستجو" class="form-control input-lg" />
+                                <button type="submit" class="button-search"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                        {{--<form method="get" action="/search/{{$qurey}}">--}}
+                            {{--@csrf--}}
+                            {{--<div id="search" class="input-group">--}}
+                                {{--<input  id="filter_name" type="text" name="search" value="" placeholder="جستجو" class="form-control input-lg" />--}}
+                                {{--<button type="button" class="button-search"><i class="fa fa-search"></i></button>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-group">--}}
+                                {{--<input type="text" name="alt" class="form-control" value="{{$banner->alt}}">--}}
+                            {{--</div>--}}
+                            {{--<button type="submit" class="btn btn-success pull-left">بروزرسانی</button>--}}
+                        {{--</form>--}}
                     </div>
                     <!-- جستجو End-->
                 </div>
@@ -398,34 +412,34 @@
         </div>
     </div>
     <!-- Feature Box Start-->
-    <div class="container">
-        <div class="custom-feature-box row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="feature-box fbox_1">
-                    <div class="title">ارسال رایگان</div>
-                    <p>برای خرید های بیش از 100 هزار تومان</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="feature-box fbox_2">
-                    <div class="title">پس فرستادن رایگان</div>
-                    <p>بازگشت کالا تا 24 ساعت پس از خرید</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="feature-box fbox_3">
-                    <div class="title">کارت هدیه</div>
-                    <p>بهترین هدیه برای عزیزان شما</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="feature-box fbox_4">
-                    <div class="title">امتیازات خرید</div>
-                    <p>از هر خرید امتیاز کسب کرده و از آن بهره بگیرید</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="container">--}}
+        {{--<div class="custom-feature-box row">--}}
+            {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
+                {{--<div class="feature-box fbox_1">--}}
+                    {{--<div class="title">ارسال رایگان</div>--}}
+                    {{--<p>برای خرید های بیش از 100 هزار تومان</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
+                {{--<div class="feature-box fbox_2">--}}
+                    {{--<div class="title">پس فرستادن رایگان</div>--}}
+                    {{--<p>بازگشت کالا تا 24 ساعت پس از خرید</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
+                {{--<div class="feature-box fbox_3">--}}
+                    {{--<div class="title">کارت هدیه</div>--}}
+                    {{--<p>بهترین هدیه برای عزیزان شما</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-3 col-sm-6 col-xs-12">--}}
+                {{--<div class="feature-box fbox_4">--}}
+                    {{--<div class="title">امتیازات خرید</div>--}}
+                    {{--<p>از هر خرید امتیاز کسب کرده و از آن بهره بگیرید</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     <!-- Feature Box End-->
     <!--Footer Start-->
     <footer id="footer">
