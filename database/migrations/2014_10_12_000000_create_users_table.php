@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('last_name');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->string('national_code')->unique();
             $table->string('phone');
             $table->string('birthday');

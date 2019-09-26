@@ -29,6 +29,9 @@ class CreateProductsTable extends Migration
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('meta_desc')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
             $table->timestamps();
         });
     }
