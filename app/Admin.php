@@ -2,14 +2,16 @@
 
 namespace App;
 
-use App\Notifications\ResetPasswordNotification;
+use App\Notifications\AdminResetPasswordNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
+
+    protected $gaurd = 'admin';
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +40,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminResetPasswordNotification($token));
+    }
+
     public function photos()
     {
         return $this->hasMany(Photo::class);
@@ -55,20 +62,16 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Coupon::class);
     }
-//    public function roles()
-//    {
-//        return $this->belongsToMany(Role::class);
-//    }
-    public function sendPasswordResetNotification($token)
+    public function roles()
     {
-        $this->notify(new ResetPasswordNotification($token));
+        return $this->belongsToMany(Role::class);
     }
     public function isAdmin()
     {
-//        foreach ($this->roles as $role)
-//            if ($role->name == 'مدیر' && $this->status == 1){
-//                return true;
-//            }
+        foreach ($this->roles as $role)
+            if ($role->name == 'مدیر' && $this->status == 1){
+                return true;
+            }
         return false;
     }
 }

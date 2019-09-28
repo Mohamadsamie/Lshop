@@ -17,8 +17,8 @@ class CreatePhotosTable extends Migration
             $table->increments('id');
             $table->string('path');
             $table->string('original_name');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Admin;
 use App\Http\Requests\AdminUserEditRequest;
 use App\Role;
 use App\User;
@@ -20,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->get()->all(); //EAGER LOADING (How to access other relations through Eloquent)
+        $users = Admin::with('roles')->get()->all(); //EAGER LOADING (How to access other relations through Eloquent)
 //        dd($users);
         return  view('admin.users.index', compact(['users']));
     }
@@ -78,7 +79,7 @@ class UserController extends Controller
         if($validator->fails()){
             return redirect('/administrator/users/create')->withErrors($validator)->withInput();
         }else {
-            $user = new User();
+            $user = new Admin();
             $user->name = $request->input('name');
             $user->last_name = $request->input('last_name');
             $user->national_code = $request->input('national_code');
@@ -116,7 +117,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         $roles = Role::all();
         return view('admin.users.edit', compact(['user', 'roles']));
     }
@@ -130,7 +131,7 @@ class UserController extends Controller
      */
     public function update(AdminUserEditRequest $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         $user->name = $request->input('name');
         $user->last_name = $request->input('last_name');
         $user->national_code = $request->input('national_code');
