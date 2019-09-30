@@ -427,6 +427,9 @@
                 <li class="treeview">
                     <a href="{{route('coupons.index')}}"><i class="fa fa-ticket"></i><span>کد تخفیف</span></a>
                 </li>
+                <li class="treeview">
+                    <a href="{{route('orders.index')}}"><i class="fa fa-ticket"></i><span>سفارشات</span></a>
+                </li>
 
                 {{--<li class="treeview">--}}
                     {{--<a href="#">--}}

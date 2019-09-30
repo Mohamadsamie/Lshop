@@ -120,7 +120,7 @@
             </div>
             <div class="buttons">
                 <div class="pull-left"><a href="{{url('/')}}" class="btn btn-default">ادامه خرید</a></div>
-                <div class="pull-right"><a href="checkout.html" class="btn btn-primary">تسویه حساب</a></div>
+                <div class="pull-right"><a href="{{route('payment.verify')}}" class="btn btn-primary">تسویه حساب</a></div>
             </div>
         </div>
         <!--Middle Part End -->

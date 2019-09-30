@@ -34,4 +34,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Photo::class);
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
 }

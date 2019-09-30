@@ -75,6 +75,7 @@ Route::group(['middleware'=>'auth:admin'], function() {
         Route::post('photos/upload', 'Backend\PhotoController@upload')->name('photos.upload');
         Route::resource('products' , 'Backend\ProductController');
         Route::resource('coupons', 'Backend\CouponController');
+        Route::get('/orders', 'Backend\OrderController@index')->name('orders.index');
     });
 });
 
@@ -83,6 +84,7 @@ Route::group(['middleware'=>'auth:admin'], function() {
 Route::group(['middleware'=>'auth'], function() {
     Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
     Route::post('/coupon', 'Frontend\CouponController@addCoupon')->name('coupon.add');
+    Route::get('/payment-verify', 'Frontend\OrderController@verify')->name('payment.verify');
 });
 
 Route::get('/', 'Frontend\HomeController@index')->name('home');
