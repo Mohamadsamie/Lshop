@@ -9,6 +9,7 @@ use App\Http\Requests\ProuctEditRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -76,7 +77,7 @@ class ProductController extends Controller
         $newProduct->meta_desc = $request->meta_desc;
         $newProduct->meta_title = $request->meta_title;
         $newProduct->meta_keywords = $request->meta_keywords;
-        $newProduct->user_id = 1;
+        $newProduct->admin_id = Auth::user()->id;
 
 //        return $request->all();
         $newProduct->save();
@@ -145,7 +146,7 @@ class ProductController extends Controller
         $Product->meta_desc = $request->meta_desc;
         $Product->meta_title = $request->meta_title;
         $Product->meta_keywords = $request->meta_keywords;
-        $Product->user_id = 1;
+        $Product->admin_id = Auth::user()->id;
 
         $Product->save();
 

@@ -44,6 +44,7 @@
 @section('scripts')
     <script type="text/javascript" src="{{asset('/js/dropzone.js')}}"></script>
     <script>
+        Dropzone.autoDiscover = false;
         var drop = new Dropzone('#photo', {
             addRemoveLinks: true,
             maxFiles: 1,

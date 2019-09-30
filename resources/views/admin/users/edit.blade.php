@@ -35,23 +35,6 @@
                                 <input type="text" value="{{$user->email}}" name="email" class="form-control" placeholder="شماره تماس را وارد کنید...">
                             </div>
                             <div class="form-group">
-                                <label for="birthday"  class="control-label">تاریخ تولد <span class="small text-gray">(مثال: 1370/02/01)</span></label>
-                                <input  class="form-control birthday" value="{{$user->birthday}}" name="birthday">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label class=" control-label">جنسیت</label>
-                                <div style="direction: rtl;">
-                                    <label class="radio-inline">
-                                        <input type="radio" @if($user->gender == 'male') checked @endif  value="male" name="gender">
-                                        مرد</label>
-                                    <label class="radio-inline">
-                                        <input type="radio"  @if($user->gender == 'female') checked @endif value="female" name="gender">
-                                        زن</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for=""> تعیین نقش کاربر</label>
                                 <select name="roles[]" id="" class="form-control" multiple>
                                     @foreach($roles as $role)

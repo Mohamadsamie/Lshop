@@ -23,8 +23,6 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->float('discount_price')->nullable();
             $table->text('description');
-            $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->unsignedInteger('admin_id');

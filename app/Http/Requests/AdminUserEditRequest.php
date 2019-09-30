@@ -30,8 +30,6 @@ class AdminUserEditRequest extends FormRequest
             'last_name'     => 'required|max:25|persian_alpha',
             'email' => [Rule::unique('users')->ignore(request()->user),'email'],
             'phone'         => 'iran_mobile',
-            'birthday'      => 'required',
-            'gender'      => 'required',
             'roles'      => 'required',
             'status'      => 'required',
             'password'      => 'nullable|min:6|same:password_confirmed|regex:/^.*(?=.*[a-zA-Z])(?=.*[0-9]).*$/',

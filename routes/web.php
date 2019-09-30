@@ -85,7 +85,7 @@ Route::group(['middleware'=>'auth'], function() {
     Route::post('/coupon', 'Frontend\CouponController@addCoupon')->name('coupon.add');
 });
 
-Route::resource('/', 'Frontend\HomeController');
+Route::get('/', 'Frontend\HomeController@index')->name('home');
 // user login route start
 Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
 Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');

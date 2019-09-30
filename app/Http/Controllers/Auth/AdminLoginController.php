@@ -31,15 +31,17 @@ class AdminLoginController extends Controller
 //            Session::flash('error-login', 'کد ملی یا رمز عبور به درستی وارد نشده است!');
 //            return redirect()->intended(route('admin.login'));
 //        }
-
-        if (Auth::guard('admin')->attempt(['national_code' => $national_code , 'password' => $password]) && Hash::check($password, $user->password)) {
-            // Authentication passed...
+        if ($user->status == 1){
+            if (Auth::guard('admin')->attempt(['national_code' => $national_code , 'password' => $password]) && Hash::check($password, $user->password)) {
+                // Authentication passed...
 //            Session::flash('success-login',  'خوش آمدید ' . $user->name . ' عزیز');
-            return redirect()->intended(route('administrator'));
+                return redirect()->intended(route('administrator'));
 
+            }
+            Session::flash('error-login', 'کد ملی یا رمز عبور به درستی وارد نشده است!');
+            return redirect()->back();
         }
-//        return redirect()->back();
-        Session::flash('error-login', 'کد ملی یا رمز عبور به درستی وارد نشده است!');
-        return redirect()->back();
+        return redirect()->route('home');
+
     }
 }

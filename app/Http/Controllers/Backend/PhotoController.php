@@ -6,6 +6,7 @@ use App\Photo;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
@@ -55,7 +56,7 @@ class PhotoController extends Controller
         $photo = new Photo();
         $photo->original_name = $original_name;
         $photo->path = $filename;
-        $photo->user_id = 1;
+        $photo->admin_id = Auth::user()->id;
         $photo->save();
 
         return response()->json([

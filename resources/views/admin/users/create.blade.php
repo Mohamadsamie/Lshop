@@ -33,23 +33,7 @@
                                 <label for="email">ایمیل</label>
                                 <input type="text" name="email" class="form-control" placeholder="شماره تماس را وارد کنید...">
                             </div>
-                            <div class="form-group">
-                                <label for="birthday" class="control-label">تاریخ تولد <span class="small text-gray">(مثال: 1370/02/01)</span></label>
-                                <input  class="form-control birthday" value="{{old('birthday')}}" name="birthday">
-                            </div>
 
-
-                            <div class="form-group">
-                                <label class=" control-label">جنسیت</label>
-                                <div style="direction: rtl;">
-                                    <label class="radio-inline">
-                                        <input type="radio" value="male" name="gender">
-                                        مرد</label>
-                                    <label class="radio-inline">
-                                        <input type="radio"  value="female" name="gender">
-                                        زن</label>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label for=""> تعیین نقش کاربر</label>
                                 <select name="roles[]" id="" class="form-control" multiple>

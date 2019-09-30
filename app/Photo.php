@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property null|string original_name
  * @property string path
- * @property int user_id
+ * @property int admin_id
  * @property mixed id
  */
 class Photo extends Model
@@ -16,7 +16,7 @@ class Photo extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Admin::class);
     }
 
     public function getPathAttribute($photo)

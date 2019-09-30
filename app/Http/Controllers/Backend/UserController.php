@@ -50,11 +50,9 @@ class UserController extends Controller
 
             'name'          => 'required|max:25|persian_alpha',
             'last_name'     => 'required|max:25|persian_alpha',
-            'email'         => 'required|email|unique:users',
+            'email'         => 'required|email|unique:admins',
             'phone'         => 'iran_mobile',
-            'national_code' => 'melli_code|unique:users',
-            'birthday'      => 'required',
-            'gender'      => 'required',
+            'national_code' => 'melli_code|unique:admins',
             'roles'      => 'required',
             'status'      => 'required',
             'password'      => 'min:6|required_with:password_confirmed|same:password_confirmed|regex:/^.*(?=.*[a-zA-Z])(?=.*[0-9]).*$/',
@@ -67,8 +65,6 @@ class UserController extends Controller
             'email.required'               => 'لطفا ایمیل خود را وارد نمایید.',
             'email.unique'               => 'این ایمیل قبلا ثبت شده است.',
             'national_code.unique'               => 'این کد ملی قبلا ثبت شده است.',
-            'birthday.required'               => 'لطفا تاریخ تولد را وارد نمایید.',
-            'gender.required'               => 'لطفا جنسیت را تعیین نمایید.',
             'roles.required'               => 'انتخاب نقش کاربر الزامیست.',
             'status.required'               => 'انتخاب وضعیت کاربر الزامیست.',
             'password.min'               => 'حداقل طول رمز 6 کاراکتر میباشد.',
@@ -85,8 +81,6 @@ class UserController extends Controller
             $user->national_code = $request->input('national_code');
             $user->phone = $request->input('phone');
             $user->email = $request->input('email');
-            $user->birthday = $request->input('birthday');
-            $user->gender = $request->input('gender');
             $user->status = $request->input('status');
             $user->password = Hash::make($request->input('password'));
 //            return $user;
@@ -137,8 +131,6 @@ class UserController extends Controller
         $user->national_code = $request->input('national_code');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
-        $user->birthday = $request->input('birthday');
-        $user->gender = $request->input('gender');
         $user->status = $request->input('status');
         if (trim($request->input('password') != "")){
             $user->password = Hash::make($request->input('password'));
@@ -157,7 +149,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = Admin::findOrFail($id);
         $user->delete();
         Session::flash('delete_user', 'کاربر با موفقیت حذف شد.');
         return redirect('/administrator/users');
