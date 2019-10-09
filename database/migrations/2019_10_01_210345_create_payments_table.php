@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +13,16 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('user_id');
-            $table->string('code', 250)->unique();
+            $table->bigInteger('order_id');
+            $table->string('method');
+            $table->string('gateway')->nullable();
+            $table->string('ref_num')->nullable();
             $table->float('amount');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
-        DB::update('ALTER TABLE orders AUTO_INCREMENT = 100000');
     }
 
     /**
@@ -31,6 +32,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('payments');
     }
 }

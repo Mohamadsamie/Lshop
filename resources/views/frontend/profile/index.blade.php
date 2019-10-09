@@ -9,22 +9,22 @@
         @endif
 
         <div class="row">
-            <aside id="column-right" class="col-sm-3 hidden-xs">
+            <aside id="column-right" class="col-sm-3">
                 <div class="alert alert-success">
                     <p> {{$user->name . ' ' . $user->last_name}} خوش آمدید.</p>
                 </div>
                 <h3 class="subtitle">حساب کاربری</h3>
                 <div class="list-group">
                     <ul class="list-item">
-                        <li><a href="#">لیست آدرس ها</a></li>
-                        <li><a href="#">لیست علاقه مندی</a></li>
-                        <li><a href="#">تاریخچه سفارشات</a></li>
-                        <li><a href="#">دانلود ها</a></li>
-                        <li><a href="#">امتیازات خرید</a></li>
-                        <li><a href="#">بازگشت</a></li>
-                        <li><a href="#">تراکنش ها</a></li>
-                        <li><a href="#">خبرنامه</a></li>
-                        <li><a href="#">پرداخت های تکرار شونده</a></li>
+                        <li><a href="{{route('user.profile.address')}}">لیست آدرس ها</a></li>
+                        {{--<li><a href="#">لیست علاقه مندی</a></li>--}}
+                        {{--<li><a href="#">تاریخچه سفارشات</a></li>--}}
+                        {{--<li><a href="#">دانلود ها</a></li>--}}
+                        {{--<li><a href="#">امتیازات خرید</a></li>--}}
+                        {{--<li><a href="#">بازگشت</a></li>--}}
+                        {{--<li><a href="#">تراکنش ها</a></li>--}}
+                        {{--<li><a href="#">خبرنامه</a></li>--}}
+                        {{--<li><a href="#">پرداخت های تکرار شونده</a></li>--}}
                     </ul>
                 </div>
             </aside>

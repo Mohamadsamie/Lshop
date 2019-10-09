@@ -39,4 +39,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class);
     }
+
+    public function hasStock(int $quantity)
+    {
+        return $this->stock >= $quantity;
+    }
 }

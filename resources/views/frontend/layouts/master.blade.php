@@ -1,3 +1,4 @@
+@inject('basket','App\Support\Basket\Basket')
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
@@ -5,7 +6,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="image/favicon.png" rel="icon" />
-    <title>فروشگاه اینترنتی سبز | Egreen</title>
+    <title>فروشگاه اینترنتی سبز | eGreen</title>
     <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
     <!-- CSS Part Start-->
     <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css" />
@@ -122,65 +123,65 @@
                 <div class="table-container">
                     <!-- Logo Start -->
                     <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-                        <div id="logo"><a href="{{url('/')}}"><img class="img-responsive" src="/image/logo.png" title="Egreen" alt="Egreen" /></a></div>
+                        <div id="logo"><a href="{{url('/')}}"><img class="img-responsive" src="/image/logo.png" title="eGreen" alt="eGreen" /></a></div>
                     </div>
                     <!-- Logo End -->
                     <!-- Mini Cart Start-->
                     <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div id="cart">
-                            <button type="button" data-toggle="dropdown" data-loading-text="بارگذاری ..." class="heading dropdown-toggle">
-                                <span class="cart-icon pull-left flip"></span>
-                                <span id="cart-total">{{Session::has('cart') ? Session::get('cart')->totalQty . ' آیتم' : ''}} {{Session::has('cart') ? Session::get('cart')->totalPrice . ' تومان' : ''}}</span></button>
-                            <ul class="dropdown-menu">
-                                @if(Session::has('cart'))
-                                    <li>
-                                        <table class="table">
-                                            @foreach(Session::get('cart')->items as $product)
-                                                <tbody>
-                                                <tr>
-                                                    <td class="text-center" width="18%"><img class="img-thumbnail"src="{{$product['item']->photos[0]->path}}"></td>
-                                                    <td class="text-left">{{$product['item']->title}}</td>
-                                                    <td class="text-right">x {{$product['qty']}}</td>
-                                                    <td class="text-right">{{$product['price']}} تومان</td>
-                                                    <td class="text-center">
-                                                        <button class="btn btn-danger btn-xs remove" title="حذف" onclick="event.preventDefault(); document.getElementById('remove-cart-item_{{$product['item']->id}}').submit();" type="button"><i class="fa fa-times"></i></button>
-                                                    </td>
-                                                    <form id="remove-cart-item_{{$product['item']->id}}" action="{{ route('cart.remove', ['id' => $product['item']->id]) }}" method="post" style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                </tr>
+                        {{--<div id="cart">--}}
+                            {{--<button type="button" data-toggle="dropdown" data-loading-text="بارگذاری ..." class="heading dropdown-toggle">--}}
+                                {{--<span class="cart-icon pull-left flip"></span>--}}
+                                {{--<span id="cart-total">{{Session::has('cart') ? Session::get('cart')->totalQty . ' آیتم' : ''}} {{Session::has('cart') ? Session::get('cart')->totalPrice . ' تومان' : ''}}</span></button>--}}
+                            {{--<ul class="dropdown-menu">--}}
+                                {{--@if(Session::has('cart'))--}}
+                                    {{--<li>--}}
+                                        {{--<table class="table">--}}
+                                            {{--@foreach(Session::get('cart')->items as $product)--}}
+                                                {{--<tbody>--}}
+                                                {{--<tr>--}}
+                                                    {{--<td class="text-center" width="18%"><img class="img-thumbnail"src="{{$product['item']->photos[0]->path}}"></td>--}}
+                                                    {{--<td class="text-left">{{$product['item']->title}}</td>--}}
+                                                    {{--<td class="text-right">x {{$product['qty']}}</td>--}}
+                                                    {{--<td class="text-right">{{$product['price']}} تومان</td>--}}
+                                                    {{--<td class="text-center">--}}
+                                                        {{--<button class="btn btn-danger btn-xs remove" title="حذف" onclick="event.preventDefault(); document.getElementById('remove-cart-item_{{$product['item']->id}}').submit();" type="button"><i class="fa fa-times"></i></button>--}}
+                                                    {{--</td>--}}
+                                                    {{--<form id="remove-cart-item_{{$product['item']->id}}" action="{{ route('cart.remove', ['id' => $product['item']->id]) }}" method="post" style="display: none;">--}}
+                                                        {{--@csrf--}}
+                                                    {{--</form>--}}
+                                                {{--</tr>--}}
 
-                                                </tbody>
-                                            @endforeach
-                                        </table>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <table class="table table-bordered">
-                                                <tbody>
-                                                <tr>
-                                                    <td class="text-right"><strong>جمع کل</strong></td>
-                                                    <td class="text-right"> {{Session::get('cart')->totalPurePrice}}تومان</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-right"><strong>تخفیف</strong></td>
-                                                    <td class="text-right">{{Session::get('cart')->totalDiscountPrice}} تومان</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-right"><strong>قابل پرداخت</strong></td>
-                                                    <td class="text-right">{{Session::get('cart')->totalPrice}} تومان</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <p class="checkout"><a href="{{route('cart.cart')}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> مشاهده سبد</a>&nbsp;</p>
+                                                {{--</tbody>--}}
+                                            {{--@endforeach--}}
+                                        {{--</table>--}}
+                                    {{--</li>--}}
+                                    {{--<li>--}}
+                                        {{--<div>--}}
+                                            {{--<table class="table table-bordered">--}}
+                                                {{--<tbody>--}}
+                                                {{--<tr>--}}
+                                                    {{--<td class="text-right"><strong>جمع کل</strong></td>--}}
+                                                    {{--<td class="text-right"> {{Session::get('cart')->totalPurePrice}}تومان</td>--}}
+                                                {{--</tr>--}}
+                                                {{--<tr>--}}
+                                                    {{--<td class="text-right"><strong>تخفیف</strong></td>--}}
+                                                    {{--<td class="text-right">{{Session::get('cart')->totalDiscountPrice}} تومان</td>--}}
+                                                {{--</tr>--}}
+                                                {{--<tr>--}}
+                                                    {{--<td class="text-right"><strong>قابل پرداخت</strong></td>--}}
+                                                    {{--<td class="text-right">{{Session::get('cart')->totalPrice}} تومان</td>--}}
+                                                {{--</tr>--}}
+                                                {{--</tbody>--}}
+                                            {{--</table>--}}
+                                            {{--<p class="checkout"><a href="{{route('cart.cart')}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> مشاهده سبد</a>&nbsp;</p>--}}
 
-                                        </div>
-                                    </li>
+                                        {{--</div>--}}
+                                    {{--</li>--}}
 
-                                @else
-                                    <p>سبد خرید شما خالی است.</p>
-                                @endif
-                            </ul>
+                                {{--@else--}}
+                                    {{--<p>سبد خرید شما خالی است.</p>--}}
+                                {{--@endif--}}
+                            {{--</ul>--}}
                             {{--<ul class="dropdown-menu">--}}
                                 {{--<li>--}}
                                     {{--<table class="table">--}}
@@ -228,6 +229,68 @@
                                     {{--</div>--}}
                                 {{--</li>--}}
                             {{--</ul>--}}
+                        {{--</div>--}}
+                        <div id="cart">
+                            <button type="button" data-toggle="dropdown" data-loading-text="بارگذاری ..." class="heading dropdown-toggle">
+                                {{--<span class="cart-icon cart pull-left flip"></span>--}}
+                                <i class="fa-2x fa-flip-horizontal fa fa-shopping-cart"></i>
+                                <span id="cart-total">
+                                    {{$basket->itemCount() ? $basket->itemCount() . ' آیتم' : ''}} {{$basket->subTotal() ? $basket->subTotal() . ' تومان' : ''}}
+                                </span></button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @if ($basket->itemCount() == 0)
+                                        <table class="table">
+                                            <tbody>
+                                            <tr>
+                                                <p class="text-center">سبد خرید شما خالیست!</p>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    @else
+                                    <table class="table">
+                                        <tbody>
+                                        @foreach($basket->all() as $item)
+                                            <tr>
+                                                <td class="text-center" width="18%"><img  class="img-thumbnail" title="{{$item->title}}" alt="{{$item->title}}" src="{{$item->photos[0]->path}}"></td>
+                                                <td class="text-left"><a href="{{route('product.single', $item->slug)}}">{{$item->title}}</a></td>
+                                                <td class="text-right">{{$item->quantity}} عدد</td>
+                                                <td class="text-right">{{number_format($item->discount_price ? $item->discount_price * $item->quantity : $item->price * $item->quantity)}} تومان</td>
+                                                <td class="text-center">
+                                                    <form method="get" action="{{route('basket.remove.product', $item->id)}}">
+                                                        @csrf
+                                                        <button class="btn btn-danger btn-xs remove" title="حذف" onclick="" type="submit"><i class="fa fa-times"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li>
+                                    <div>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td class="text-right"><strong>جمع کل :</strong></td>
+                                                <td class="text-right">{{number_format($basket->subTotal())}} تومان</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>حمل و نقل :</strong></td>
+                                                <td class="text-right">{{number_format(10000)}} تومان</td>
+                                            </tr>
+                                            <tr>
+                                            <td class="text-right"><strong>تخفیف :</strong></td>
+                                            <td class="text-right">{{number_format($basket->discount())}} تومان</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>قابل پرداخت :</strong></td>
+                                                <td class="text-right">{{number_format($basket->subTotal() + 10000)}} تومان</td>
+                                            </tr>
+                                        </table>                                        <p class="checkout"><a href="{{route('basket.index')}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> مشاهده سبد</a>&nbsp;&nbsp;&nbsp;<a href="{{route('basket.checkout.form')}}" class="btn btn-primary"><i class="fa fa-share"></i> تسویه حساب</a></p>
+                                    </div>
+                                </li>
+                                @endif
+                            </ul>
                         </div>
                     </div>
                     <!-- Mini Cart End-->
@@ -267,92 +330,92 @@
                         <li><a class="home_link" title="خانه" href="{{url('/')}}">خانه</a></li>
                         {{-----------------------------------------}}
 
-                        <li class="dropdown"><a href="{{route('category.index', ['slug' => 'مواد-غذایی'])}}">مواد غذایی</a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a href="category.html">مواد پروتئینی <span>&rsaquo;</span></a>
-                                        <div class="dropdown-menu">
-                                            <ul>
-                                                <li><a href="category.html">زیردسته ها </a> </li>
-                                                <li><a href="category.html">زیردسته ها </a> </li>
-                                                <li><a href="category.html">زیردسته ها </a> </li>
-                                                <li><a href="category.html">زیردسته ها </a> </li>
-                                                <li><a href="category.html">زیردسته جدید </a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="{{route('category.index', ['slug' => 'غذای-آماده'])}}">غذای آماده</a></li>
-                                    <li><a href="category.html" >نوشیدنی ها</a> </li>
-                                    <li><a href="category.html">خوار و بار<span>&rsaquo;</span></a>
-                                        <div class="dropdown-menu">
-                                            <ul>
-                                                <li><a href="category.html">زیردسته ها </a></li>
-                                                <li><a href="category.html">زیردسته جدید</a></li>
-                                                <li><a href="category.html">زیردسته جدید</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="category.html">کنسرو و کمپوت</a></li>
-                                    <li><a href="category.html">تنقلات</a></li>
-                                    <!--<li><a href="category.html">لوازم <span>&rsaquo;</span></a>-->
-                                    <!--<div class="dropdown-menu">-->
-                                    <!--<ul>-->
-                                    <!--<li><a href="category.html">زیردسته های جدید</a></li>-->
-                                    <!--</ul>-->
-                                    <!--</div>-->
-                                    <!--</li>-->
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="dropdown"><a href="category.html">کفش</a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li><a href="category.html">آقایان</a> </li>
-                                    <li><a href="category.html">بانوان <span>&rsaquo;</span></a>
-                                        <div class="dropdown-menu">
-                                            <ul>
-                                                <li><a href="category.html">زیردسته های جدید </a> </li>
-                                                <li><a href="category.html">زیردسته ها </a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="category.html">دخترانه</a> </li>
-                                    <li><a href="category.html">پسرانه</a> </li>
-                                    <li><a href="category.html">نوزاد</a> </li>
-                                    <li><a href="category.html">لوازم <span>&rsaquo;</span></a>
-                                        <div class="dropdown-menu">
-                                            <ul>
-                                                <li><a href="category.html">زیردسته های جدید</a></li>
-                                                <li><a href="category.html">زیردسته های جدید</a></li>
-                                                <li><a href="category.html">زیردسته ها</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="dropdown"> <a href="category.html">ساعت</a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li> <a href="category.html">ساعت مردانه</a></li>
-                                    <li> <a href="category.html">ساعت زنانه</a></li>
-                                    <li> <a href="category.html">ساعت بچگانه</a></li>
-                                    <li> <a href="category.html">لوازم</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="dropdown"><a href="category.html">زیبایی و سلامت</a>
-                            <div class="dropdown-menu">
-                                <ul>
-                                    <li> <a href="category.html">عطر و ادکلن</a></li>
-                                    <li> <a href="category.html">آرایشی</a></li>
-                                    <li> <a href="category.html">ضد آفتاب</a></li>
-                                    <li> <a href="category.html">مراقبت از پوست</a></li>
-                                    <li> <a href="category.html">مراقبت از چشم</a></li>
-                                    <li> <a href="category.html">مراقبت از مو</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                        {{--<li class="dropdown"><a href="{{route('category.index', ['slug' => 'مواد-غذایی'])}}">مواد غذایی</a>--}}
+                            {{--<div class="dropdown-menu">--}}
+                                {{--<ul>--}}
+                                    {{--<li><a href="category.html">مواد پروتئینی <span>&rsaquo;</span></a>--}}
+                                        {{--<div class="dropdown-menu">--}}
+                                            {{--<ul>--}}
+                                                {{--<li><a href="category.html">زیردسته ها </a> </li>--}}
+                                                {{--<li><a href="category.html">زیردسته ها </a> </li>--}}
+                                                {{--<li><a href="category.html">زیردسته ها </a> </li>--}}
+                                                {{--<li><a href="category.html">زیردسته ها </a> </li>--}}
+                                                {{--<li><a href="category.html">زیردسته جدید </a> </li>--}}
+                                            {{--</ul>--}}
+                                        {{--</div>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a href="{{route('category.index', ['slug' => 'غذای-آماده'])}}">غذای آماده</a></li>--}}
+                                    {{--<li><a href="category.html" >نوشیدنی ها</a> </li>--}}
+                                    {{--<li><a href="category.html">خوار و بار<span>&rsaquo;</span></a>--}}
+                                        {{--<div class="dropdown-menu">--}}
+                                            {{--<ul>--}}
+                                                {{--<li><a href="category.html">زیردسته ها </a></li>--}}
+                                                {{--<li><a href="category.html">زیردسته جدید</a></li>--}}
+                                                {{--<li><a href="category.html">زیردسته جدید</a></li>--}}
+                                            {{--</ul>--}}
+                                        {{--</div>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a href="category.html">کنسرو و کمپوت</a></li>--}}
+                                    {{--<li><a href="category.html">تنقلات</a></li>--}}
+                                    {{--<!--<li><a href="category.html">لوازم <span>&rsaquo;</span></a>-->--}}
+                                    {{--<!--<div class="dropdown-menu">-->--}}
+                                    {{--<!--<ul>-->--}}
+                                    {{--<!--<li><a href="category.html">زیردسته های جدید</a></li>-->--}}
+                                    {{--<!--</ul>-->--}}
+                                    {{--<!--</div>-->--}}
+                                    {{--<!--</li>-->--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropdown"><a href="category.html">کفش</a>--}}
+                            {{--<div class="dropdown-menu">--}}
+                                {{--<ul>--}}
+                                    {{--<li><a href="category.html">آقایان</a> </li>--}}
+                                    {{--<li><a href="category.html">بانوان <span>&rsaquo;</span></a>--}}
+                                        {{--<div class="dropdown-menu">--}}
+                                            {{--<ul>--}}
+                                                {{--<li><a href="category.html">زیردسته های جدید </a> </li>--}}
+                                                {{--<li><a href="category.html">زیردسته ها </a> </li>--}}
+                                            {{--</ul>--}}
+                                        {{--</div>--}}
+                                    {{--</li>--}}
+                                    {{--<li><a href="category.html">دخترانه</a> </li>--}}
+                                    {{--<li><a href="category.html">پسرانه</a> </li>--}}
+                                    {{--<li><a href="category.html">نوزاد</a> </li>--}}
+                                    {{--<li><a href="category.html">لوازم <span>&rsaquo;</span></a>--}}
+                                        {{--<div class="dropdown-menu">--}}
+                                            {{--<ul>--}}
+                                                {{--<li><a href="category.html">زیردسته های جدید</a></li>--}}
+                                                {{--<li><a href="category.html">زیردسته های جدید</a></li>--}}
+                                                {{--<li><a href="category.html">زیردسته ها</a></li>--}}
+                                            {{--</ul>--}}
+                                        {{--</div>--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropdown"> <a href="category.html">ساعت</a>--}}
+                            {{--<div class="dropdown-menu">--}}
+                                {{--<ul>--}}
+                                    {{--<li> <a href="category.html">ساعت مردانه</a></li>--}}
+                                    {{--<li> <a href="category.html">ساعت زنانه</a></li>--}}
+                                    {{--<li> <a href="category.html">ساعت بچگانه</a></li>--}}
+                                    {{--<li> <a href="category.html">لوازم</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropdown"><a href="category.html">زیبایی و سلامت</a>--}}
+                            {{--<div class="dropdown-menu">--}}
+                                {{--<ul>--}}
+                                    {{--<li> <a href="category.html">عطر و ادکلن</a></li>--}}
+                                    {{--<li> <a href="category.html">آرایشی</a></li>--}}
+                                    {{--<li> <a href="category.html">ضد آفتاب</a></li>--}}
+                                    {{--<li> <a href="category.html">مراقبت از پوست</a></li>--}}
+                                    {{--<li> <a href="category.html">مراقبت از چشم</a></li>--}}
+                                    {{--<li> <a href="category.html">مراقبت از مو</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
 
                         {{-----------------------------------------}}
 
@@ -397,7 +460,7 @@
                             {{--<!--</div>-->--}}
                         {{--</li>--}}
 
-                        <li class="custom-link-right"><a href="#" target="_blank"> همین حالا بخرید!</a></li>
+                        <li class="custom-link-right"><a href="{{route('basket.checkout.form')}}"> همین حالا بخرید!</a></li>
                     </ul>
                 </div>
             </div>
@@ -520,7 +583,7 @@
             <div class="container">
                 <div id="powered" class="clearfix">
                     <div class="powered_text pull-left flip">
-                        <p>کپی رایت © 2019  Egreen | طراحی و اجرا توسط  <a href="http://soldesign.ir" target="_blank"> سُل دیزاین  </a></p>
+                        <p>کپی رایت © 2019  eGreen | طراحی و اجرا توسط  <a href="http://soldesign.ir" target="_blank"> سُل دیزاین  </a></p>
                     </div>
                     <!--<div class="social pull-right flip"> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/socialicons/facebook.png" alt="Facebook" title="Facebook"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/socialicons/twitter.png" alt="Twitter" title="Twitter"> </a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/socialicons/google_plus.png" alt="Google+" title="Google+"> </a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/socialicons/pinterest.png" alt="Pinterest" title="Pinterest"> </a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="image/socialicons/rss.png" alt="RSS" title="RSS"> </a> </div>-->
                 </div>

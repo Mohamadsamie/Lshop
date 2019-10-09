@@ -81,5 +81,36 @@ class UserController extends Controller
         $user = Auth::user();
         return view('frontend.profile.index', compact(['user']));
     }
+    public function getAddress(){
+//        $user = User::with('addresses.province','addresses.city')->whereId(Auth::id())->get()->first();
+        $user = Auth::user();
+        $address = Address::with('user')->whereId($user->id)->first();
+//        dd($address->id);
+        return view('frontend.profile.address', compact(['user', 'address']));
+
+    }
+    public function updateAddress(Request $request,$id){
+
+        $validator = Validator::make( $request->all(), [
+
+            'address'       => 'address:alpha_space|persian_alpha',
+            'post_code'     => 'iran_postal_code',
+        ]);
+        if($validator->fails()){
+            return redirect('/profile/address')->withErrors($validator)->withInput();
+        }else {
+            $address = Address::findOrFail($id);
+            $address->post_code = $request->input('post_code');
+            $address->province_id = $request->input('province_id');
+            $address->city_id = $request->input('city_id');
+            $address->address = $request->input('address');
+            $address->save();
+            Session::flash('success', 'آدرس شما ویرایش شد.');
+            return back();
+        }
+
+
+
+    }
 
 }

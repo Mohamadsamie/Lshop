@@ -12,6 +12,7 @@
 */
 
 
+use App\Support\Storage\Contracts\StorageInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
@@ -83,18 +84,34 @@ Route::group(['middleware'=>'auth:admin'], function() {
 // frontend middleware
 Route::group(['middleware'=>'auth'], function() {
     Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
+    Route::get('/profile/address', 'Frontend\UserController@getAddress')->name('user.profile.address');
+    Route::post('/profile/address/update/{id}', 'Frontend\UserController@updateAddress')->name('user.update.address');
     Route::post('/coupon', 'Frontend\CouponController@addCoupon')->name('coupon.add');
     Route::get('/payment-verify', 'Frontend\OrderController@verify')->name('payment.verify');
 });
 
 Route::get('/', 'Frontend\HomeController@index')->name('home');
+
+
 // user login route start
 Route::post('/register-user', 'Frontend\UserController@register')->name('user.register');
 Route::post('login-user' , 'Frontend\HomeController@authenticateUser')->name('user.login');
 // user login route end
-Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
-Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('cart.remove');
-Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.cart');
+
+
+
+//Route::get('/add-to-cart/{id}', 'Frontend\CartController@addToCart')->name('cart.add');
+Route::get('/basket/add/{product}' , 'Frontend\BasketController@add')->name('basket.add');
+Route::get('/basket', 'Frontend\BasketController@index')->name('basket.index');
+Route::post('/basket/update/{product}', 'Frontend\BasketController@update')->name('basket.update');
+Route::get('/basket/{product}/product-remove', 'Frontend\BasketController@removeItem')->name('basket.remove.product');
+Route::get('/basket/checkout', 'Frontend\BasketController@checkoutForm')->name('basket.checkout.form');
+Route::post('basket/checkout', 'Frontend\BasketController@checkout')->name('basket.checkout');
+Route::get('/basket/clear' , function () {
+    resolve(StorageInterface::class)->clear();
+});
+//Route::post('/remove-item/{id}', 'Frontend\CartController@removeItem')->name('cart.remove');
+//Route::get('/cart', 'Frontend\CartController@getCart')->name('cart.cart');
 Route::get('/products/{slug}', 'Frontend\ProductController@getProduct')->name('product.single');
 Route::get('/category/{slug}/', 'Frontend\ProductController@getProductByCategory')->name('category.index');
 Route::get('/search', 'Frontend\SearchController@search')->name('search');

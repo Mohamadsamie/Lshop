@@ -1,21 +1,17 @@
 /*-----------------------------------------------------------------------------------
 
-    Template Name: Marketshop eCommerce HTML Template
-    Author: Harnish Design
-    Author URI: http://harnishdesign.net
-
 -----------------------------------------------------------------------------------*/
 
 /*===================================================================================*/
 /*  General
 /*===================================================================================*/
 body { font-family: 'WYekan', sans-serif; }
-a, a b, .articleHeader span a, .pagination > li > a { color:#cfe160; }
+a, a b, .articleHeader span a, .pagination > li > a { color:#000; }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
 	background-color:#cfe160;
 	border-color:#cfe160;
 }
-a:hover, a b:hover, .category .tabs li a:hover, .sitemap li a:hover, .pagination > li > a:hover, .breadcrumb a:hover, .login-content .right a:hover, .box-category a:hover, .list-item a:hover { color:#000; }
+a:hover, a b:hover, .category .tabs li a:hover, .sitemap li a:hover, .pagination > li > a:hover, .breadcrumb a:hover, .login-content .right a:hover, .box-category a:hover, .list-item a:hover { color:#359169; }
 /*===================================================================================*/
 /*  Header
 /*===================================================================================*/
