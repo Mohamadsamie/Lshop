@@ -119,19 +119,36 @@
                         <div class="col-sm-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><i class="fa fa-pencil"></i> افزودن توضیح برای سفارش.</h4>
+                                    <h4 class="panel-title"><i class="fa fa-credit-card"></i> انتخاب درگاه و پرداخت نهایی </h4>
                                 </div>
                                 <div class="panel-body">
-                                    <textarea rows="4" class="form-control" id="confirm_comment" name="comments"></textarea>
-                                    <br>
-                                    <label class="control-label" for="confirm_agree">
-                                        <input type="checkbox" checked="checked" value="1" required="" class="validate required" id="confirm_agree" name="confirm agree">
-                                        <span><a class="agree" href="#"><b>شرایط و قوانین</b></a> را خوانده ام و با آنها موافق هستم.</span> </label>
-                                    <div class="buttons">
-                                        <div class="pull-right">
-                                            <input type="button" class="btn btn-primary" id="button-confirm" value="تایید سفارش">
+                                    <form action="{{route('basket.checkout')}}" id='checkout-form' method="post" >
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <input type="radio" id="online" value="online" name="method"
+                                                       class="custom-control-input">
+                                                <label class="custom-control-label" for="online">
+                                                    پرداخت آنلاین
+                                                </label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <select name='gateway' class="form-control" id="sel1">
+                                                        <option  value="saman">سامان</option>
+                                                        <option value="pasargad">پاسارگاد</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success pull-right">پرداخت</button>
+                                                {{--<a onclick="event.preventDefault();document.getElementById('checkout-form').submit()" class="btn btn-primary d-block w-100">@lang('payment.pay')</a>--}}
+
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
+                                    @include('frontend.partials.validation')
+
                                 </div>
                             </div>
                         </div>

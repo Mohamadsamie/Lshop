@@ -87,8 +87,10 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('/profile/address', 'Frontend\UserController@getAddress')->name('user.profile.address');
     Route::post('/profile/address/update/{id}', 'Frontend\UserController@updateAddress')->name('user.update.address');
     Route::post('/coupon', 'Frontend\CouponController@addCoupon')->name('coupon.add');
-    Route::get('/payment-verify', 'Frontend\OrderController@verify')->name('payment.verify');
+//    Route::get('/payment-verify', 'Frontend\OrderController@verify')->name('payment.verify');
 });
+Route::post('/payment/{gateway}/callback', 'Frontend\PaymentController@verify')->name('payment.verify');
+
 
 Route::get('/', 'Frontend\HomeController@index')->name('home');
 

@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->float('amount');
             $table->timestamps();
         });
-        DB::update('ALTER TABLE orders AUTO_INCREMENT = 100000');
+        DB::update('ALTER TABLE `orders` AUTO_INCREMENT = 100000');
     }
 
     /**

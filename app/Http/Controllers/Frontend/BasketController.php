@@ -8,19 +8,23 @@ use App\Exceptions\QuantityExceededExeption;
 use App\Product;
 use App\Province;
 use App\Support\Basket\Basket;
+use App\Support\Payment\Transaction;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+
 class BasketController extends Controller
 {
     private $basket;
+    private $transaction;
 
-    public function __construct(Basket $basket)
+    public function __construct(Basket $basket, Transaction $transaction)
     {
         $this->middleware('auth')->only('checkoutForm','checkout');
         $this->basket = $basket;
+        $this->transaction = $transaction;
     }
 
     public function add(Product $product)
@@ -70,7 +74,21 @@ class BasketController extends Controller
 
     public function checkout(Request $request)
     {
-        dd($request->all());
+        $this->validateForm($request);
+
+        $order = $this->transaction->checkout();
+
+        return redirect()->route('user.profile')->with('success', __('payment.your order has been registered', ['orderNum' => $order->id]));
+    }
+
+
+
+    private function validateForm($request)
+    {
+        $request->validate([
+            'method' => ['required'],
+            'gateway' => ['required_if:method,online']
+        ]);
     }
 
     public function removeItem(Product $product)

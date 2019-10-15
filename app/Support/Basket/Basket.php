@@ -98,5 +98,10 @@ class Basket
         return $products;
     }
 
+    public function clear()
+    {
+        return $this->storage->clear();
+    }
+
 
 }
