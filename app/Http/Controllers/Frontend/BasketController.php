@@ -13,6 +13,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class BasketController extends Controller
@@ -31,10 +32,14 @@ class BasketController extends Controller
     {
         try {
             $this->basket->add($product, 1);
-            return back()->with('success', __('payment.added to basket'));
+//            return back()->with('success', __('payment.added to basket'));
+            alert()->html("<div style='font-size: large'>محصول به سبد خرید اضافه شد.</div>",'','success');
+            return back();
 
         }catch (QuantityExceededExeption $e){
-            return back()->with('error', __('payment.quantity exceeded'));
+            alert()->html("<div style='font-size: large'>محصول مورد نظر به تعدادی که شما درخواست داده اید موجود نیست.</div>",'','error');
+            return back();
+//            return back()->with('error', __('payment.quantity exceeded'));
 
         }
     }
@@ -53,11 +58,15 @@ class BasketController extends Controller
                 return back();
 
             }catch (QuantityExceededExeption $e){
-                return back()->with('error', __('payment.quantity exceeded'));
+//                return back()->with('error', __('payment.quantity exceeded'));
+                alert()->html("<div style='font-size: large'>محصول مورد نظر به تعدادی که شما درخواست داده اید موجود نیست.</div>",'','error');
+                return back();
 
             }
         } else {
-            return back()->with('error', __('payment.quantity exceeded'));
+//            return back()->with('error', __('payment.quantity exceeded'));
+            alert()->html("<div style='font-size: large'>محصول مورد نظر به تعدادی که شما درخواست داده اید موجود نیست.</div>",'','error');
+            return back();
         }
 
 
@@ -94,7 +103,8 @@ class BasketController extends Controller
     public function removeItem(Product $product)
     {
         $this->basket->removeProduct($product, 0);
-//        Alert::toast('محصول مورد نظر با موفقیت حذف شد','success');
+//        Alert::toast('محصول مورد نظر با موفقیت حذف شد','error');
+        alert()->html("<div style='font-size: large'>سبد خرید بروزرسانی شد.</div>",'','success');
         return back();
     }
 

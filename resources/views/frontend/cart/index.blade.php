@@ -132,6 +132,7 @@
     <!-- Breadcrumb End-->
     @include('frontend.partials.alerts')
     @if ($items->isEmpty())
+        <h1 class="empty-basket text-center hidden-xs"><i class="fa fa-shopping-basket"></i></h1>
         <h2 class="p-5 text-center">
             @lang('payment.empty basket' , ['link' => url('/')])
         </h2>
