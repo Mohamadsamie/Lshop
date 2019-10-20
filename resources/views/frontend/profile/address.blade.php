@@ -5,9 +5,6 @@
 
         <div class="row">
             <aside id="column-right" class="col-sm-3 ">
-                <div class="alert alert-success">
-                    <p> {{$user->name . ' ' . $user->last_name}} خوش آمدید.</p>
-                </div>
                 <h3 class="subtitle">حساب کاربری</h3>
                 <div class="list-group">
                     <ul class="list-item">
@@ -22,7 +19,7 @@
                         {{--<li><a href="#">پرداخت های تکرار شونده</a></li>--}}
                     </ul>
                 </div>
-                <div class="text-center alert alert-warning">
+                <div id="address" class="alert alert-warning">
                     <p> با توجه به شروع فعالیت وبسایت فعلا تمام سرویس ها در شهر بندرعباس قابل ارایه به همشهریان عزیز خواهند بود.  </p>
                 </div>
             </aside>

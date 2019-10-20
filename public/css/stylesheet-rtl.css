@@ -205,7 +205,7 @@ div {
 /*===================================================================================*/
 .alert {
 	padding-left:15px;
-	padding-right:50px;
+	/*padding-right:50px;*/
 }
 .alert .fa { right: 18px; }
 .text-left { text-align:right; }

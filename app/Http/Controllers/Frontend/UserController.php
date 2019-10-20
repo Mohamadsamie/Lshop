@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Address;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

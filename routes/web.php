@@ -77,6 +77,7 @@ Route::group(['middleware'=>'auth:admin'], function() {
         Route::resource('products' , 'Backend\ProductController');
         Route::resource('coupons', 'Backend\CouponController');
         Route::get('/orders', 'Backend\OrderController@index')->name('orders.index');
+        Route::get('/orders/list/{id}', 'Backend\OrderController@getOrderLists')->name('orders.list');
     });
 });
 
@@ -86,6 +87,8 @@ Route::group(['middleware'=>'auth'], function() {
     Route::get('/profile', 'Frontend\UserController@profile')->name('user.profile');
     Route::get('/profile/address', 'Frontend\UserController@getAddress')->name('user.profile.address');
     Route::post('/profile/address/update/{id}', 'Frontend\UserController@updateAddress')->name('user.update.address');
+    Route::get('/profile/orders/list', 'Frontend\OrderController@getOrders')->name('user.profile.orders');
+    Route::get('/profile/orders/{id}', 'Frontend\OrderController@getOrdersList')->name('user.profile.orders.list');
     Route::post('/coupon', 'Frontend\CouponController@addCoupon')->name('coupon.add');
 //    Route::get('/payment-verify', 'Frontend\OrderController@verify')->name('payment.verify');
 });

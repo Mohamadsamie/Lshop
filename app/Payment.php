@@ -27,4 +27,8 @@ class Payment extends Model
         $this->status = 1;
         $this->save();
     }
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

@@ -41,9 +41,9 @@
                         <tbody>
                         @foreach($orders as $order)
                             <tr>
-                                <td class="text-center">{{$order->id}}</td>
+                                <td class="text-center"><a href="{{route('orders.list', ['id' => $order->id ])}}">{{$order->id}}</a></td>
                                 <td class="text-center">{{$order->amount}}</td>
-                                @if($order->status == 0)
+                                @if($order->payment->status == 0)
                                     <td class="text-center"><span class="label label-danger">پرداخت نشده</span></td>
                                 @else
                                     <td class="text-center"><span class="label label-success">پرداخت شده</span></td>
@@ -53,6 +53,7 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="text-center">{{$orders->links()}}</div>
                 <!-- /.table-responsive -->
             </div>
         </div>

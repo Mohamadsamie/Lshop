@@ -18,7 +18,7 @@
                     <ul class="list-item">
                         <li><a href="{{route('user.profile.address')}}">لیست آدرس ها</a></li>
                         {{--<li><a href="#">لیست علاقه مندی</a></li>--}}
-                        {{--<li><a href="#">تاریخچه سفارشات</a></li>--}}
+                        <li><a href="{{route('user.profile.orders')}}">تاریخچه سفارشات</a></li>
                         {{--<li><a href="#">دانلود ها</a></li>--}}
                         {{--<li><a href="#">امتیازات خرید</a></li>--}}
                         {{--<li><a href="#">بازگشت</a></li>--}}
