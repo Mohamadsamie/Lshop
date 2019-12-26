@@ -328,6 +328,8 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
                         <li><a class="home_link" title="خانه" href="{{url('/')}}">خانه</a></li>
+                        <li><a class="home_link" title="درباره ما" href="{{route('about')}}">درباه ما</a></li>
+                        <li><a class="home_link" title="تماس با ما" href="{{route('contact')}}">تماس با ما</a></li>
                         {{-----------------------------------------}}
 
                         {{--<li class="dropdown"><a href="{{route('category.index', ['slug' => 'مواد-غذایی'])}}">مواد غذایی</a>--}}

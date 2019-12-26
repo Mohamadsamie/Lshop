@@ -120,10 +120,14 @@ Route::get('/basket/clear' , function () {
 Route::get('/products/{slug}', 'Frontend\ProductController@getProduct')->name('product.single');
 Route::get('/category/{slug}/', 'Frontend\ProductController@getProductByCategory')->name('category.index');
 Route::get('/search', 'Frontend\SearchController@search')->name('search');
+Route::get('/about', 'Frontend\HomeController@about')->name('about');
+Route::get('/contact', 'Frontend\HomeController@contact')->name('contact');
 
 
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/permission' , function () {
+    auth()->user()->givePermissionsTo('Delete super user');
 
+});
