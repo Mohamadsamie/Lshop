@@ -516,37 +516,37 @@
                     <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
                         <h5>اطلاعات</h5>
                         <ul>
-                            <li><a href="about-us.html">درباره ما</a></li>
-                            <li><a href="about-us.html">اطلاعات 0 تومان</a></li>
-                            <li><a href="about-us.html">حریم خصوصی</a></li>
-                            <li><a href="about-us.html">شرایط و قوانین</a></li>
+                            <li><a href="{{route('about')}}">درباره ما</a></li>
+                            {{--<li><a href="about-us.html">اطلاعات 0 تومان</a></li>--}}
+                            <li><a href="#">حریم خصوصی</a></li>
+                            <li><a href="{{route('terms')}}">شرایط و قوانین</a></li>
                         </ul>
                     </div>
                     <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
                         <h5>خدمات مشتریان</h5>
                         <ul>
-                            <li><a href="contact-us.html">تماس با ما</a></li>
-                            <li><a href="#">بازگشت</a></li>
-                            <li><a href="sitemap.html">نقشه سایت</a></li>
+                            <li><a href="{{route('contact')}}l">تماس با ما</a></li>
+                            {{--<li><a href="#">بازگشت</a></li>--}}
+                            {{--<li><a href="sitemap.html">نقشه سایت</a></li>--}}
                         </ul>
                     </div>
                     <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                        <h5>امکانات جانبی</h5>
+                        {{--<h5>امکانات جانبی</h5>--}}
                         <ul>
-                            <li><a href="#">برند ها</a></li>
-                            <li><a href="#">کارت هدیه</a></li>
-                            <li><a href="#">بازاریابی</a></li>
-                            <li><a href="#">ویژه ها</a></li>
+                            {{--<li><a href="#">برند ها</a></li>--}}
+                            {{--<li><a href="#">کارت هدیه</a></li>--}}
+                            {{--<li><a href="#">بازاریابی</a></li>--}}
+                            {{--<li><a href="#">ویژه ها</a></li>--}}
                         </ul>
                     </div>
                     <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                        <h5>حساب من</h5>
-                        <ul>
-                            <li><a href="#">حساب کاربری</a></li>
-                            <li><a href="#">تاریخچه سفارشات</a></li>
-                            <li><a href="#">لیست علاقه مندی</a></li>
-                            <li><a href="#">خبرنامه</a></li>
-                        </ul>
+                        {{--<h5>حساب من</h5>--}}
+                        {{--<ul>--}}
+                            {{--<li><a href="#">حساب کاربری</a></li>--}}
+                            {{--<li><a href="#">تاریخچه سفارشات</a></li>--}}
+                            {{--<li><a href="#">لیست علاقه مندی</a></li>--}}
+                            {{--<li><a href="#">خبرنامه</a></li>--}}
+                        {{--</ul>--}}
                     </div>
                     <div class="contact col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="home-newsletter">

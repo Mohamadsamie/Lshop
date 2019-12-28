@@ -122,6 +122,7 @@ Route::get('/category/{slug}/', 'Frontend\ProductController@getProductByCategory
 Route::get('/search', 'Frontend\SearchController@search')->name('search');
 Route::get('/about', 'Frontend\HomeController@about')->name('about');
 Route::get('/contact', 'Frontend\HomeController@contact')->name('contact');
+Route::get('/terms', 'Frontend\HomeController@terms')->name('terms');
 
 
 
